@@ -1,0 +1,130 @@
+<view class="container" style="height:550px" wx:if="{{tag == 'search'}}">
+<wux-floating-button position="topRight" theme="dark" buttons="{{ buttons }}" bind:change="onChangeFloadButton" bind:click="onClick" actionRotate="true"/>
+  <view class="block-era">
+    <van-cell-group>
+      <van-field
+        value="{{ value }}"
+        placeholder="请输入商品名"
+        border="{{ false }}"
+        left-icon="search"
+        bind:change="inputChange"
+        bind:focus="inputPre"
+        bind:blur="inputDes"
+      />
+    </van-cell-group>
+    <view class="inner-area" wx:if="{{ history_show }}">
+      <van-row gutter="10">
+        <van-col span="20">
+          <text class="history">历史记录:</text>
+        </van-col>
+        <van-col span="3">
+          <van-icon name="delete" bindtouchstart="onclearSearchHistory"/>
+        </van-col>
+      </van-row>
+      <view wx:if="{{searchStorage.length!==0}}" wx:for="{{searchStorage}}" wx:key="item.id" wx:for-index="sidx">
+        <view class="search-history">
+          <van-row gutter="10">
+            <van-col wx:for="{{ item }}" span="8" wx:key="item.id">
+              <van-button id="{{ sidx*3 + index }}" size="mini" type="default" bindtouchstart="onclickSearchHistoryButton">{{ item }}</van-button>      
+            </van-col>
+          </van-row>
+        </view>
+      </view>
+      <view wx:if="{{searchStorage.length==0}}">
+        <text class="none-text">无历史记录</text>
+      </view>
+    </view>
+    <view style="background-color: #c9c3c3e1;height:2px;width:300px;margin-left: 15px;"></view>
+    <van-cell-group>
+      <van-field
+        value="{{ nameValue }}"
+        placeholder="请输入姓名"
+        border="{{ false }}"
+        left-icon="search"
+        bind:change="inputChangeName"
+        bind:focus="inputPreName"
+        bind:blur="inputDesName"
+      />
+    </van-cell-group>
+
+    <view class="inner-area" wx:if="{{ history_show_name }}">
+      <van-row gutter="10">
+        <van-col span="20">
+          <text class="history">历史记录:</text>
+        </van-col>
+        <van-col span="3">
+          <van-icon name="delete" bindtouchstart="onclearSearchHistoryName"/>
+        </van-col>
+      </van-row>
+      <view wx:if="{{searchStorageName.length!==0}}" wx:for="{{searchStorageName}}" wx:key="item.id" wx:for-index="sidx">
+        <view class="search-history">
+          <van-row gutter="10">
+            <van-col wx:for="{{ item }}" span="8" wx:key="item.id">
+              <van-button id="{{ sidx*3 + index }}" size="mini" type="default" bindtouchstart="onclickSearchHistoryButtonName">{{ item }}</van-button>      
+            </van-col>
+          </van-row>
+        </view>
+      </view>
+      <view wx:if="{{searchStorageName.length==0}}">
+        <text class="none-text">无历史记录</text>
+      </view>
+    </view>
+    <view style="background-color: #c9c3c3e1;height:2px;width:300px;margin-left: 15px;"></view>
+    <view class="search-history">
+    <van-row gutter="7">
+    <van-col span="12">
+            <van-checkbox value="{{ send }}" data-key="send" bind:change="sendClick" use-icon-slot custom-class="demo-checkbox">
+        发货
+        <image mode="widthFix" slot="icon" src="{{ send ? sendIcon.active : sendIcon.normal }}" class="icon" />
+      </van-checkbox>        
+    </van-col>
+        <van-col span="12">
+            <van-checkbox value="{{ pay }}" data-key="pay" bind:change="payClick" use-icon-slot custom-class="demo-checkbox">
+        付款
+        <image mode="widthFix" slot="icon" src="{{ pay ? payIcon.active : payIcon.normal }}" class="icon" />
+      </van-checkbox>        
+    </van-col>
+    </van-row>
+      
+    </view>
+    <view style="background-color: #c9c3c3e1;height:2px;width:300px;margin-left: 15px;"></view>
+    <view class="search-historyv2">
+        <van-row gutter="7">
+    <van-col span="12">
+            
+            <picker mode="date" value="{{startDate}}" start="2018-01-01" end="2209-01-01" bindchange="bindStartDateChange">
+            <text class="pick-text">开始时间:</text>
+            <text class="pick-text">{{startDate}}</text>            
+  </picker>        
+    </van-col>
+        <van-col span="12">
+            <picker mode="date" value="{{endDate}}" start="2018-01-01" end="2209-01-01" bindchange="bindEndDateChange">
+            <text class="pick-text">结束时间:</text>        
+            <text class="pick-text">{{endDate}}</text>                    
+  </picker>      
+    </van-col>
+    </van-row>
+          
+        </view>
+    <view class="search-btn" >
+      <van-button custom-class="search-btn-back" size="large" type="primary" bindtap="searchResult">搜索</van-button>    
+    </view>
+  </view>
+
+<van-dialog id="van-dialog" closeOnClickOverlay="true" overlay="true"/>
+
+</view>
+
+<van-tabbar active="{{ active }}" bind:change="onChange">
+
+  <van-tabbar-item>
+    <span>商品</span>
+    <image slot="icon" src="{{ search.normal }}" class="icon" mode="aspectFit" />
+    <image slot="icon-active" src="{{ search.active }}" mode="aspectFit" />
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <span>个人</span>
+    <image slot="icon" src="{{ input.normal }}" class="icon" mode="aspectFit" />
+    <image slot="icon-active" src="{{ input.active }}" mode="aspectFit" />
+  </van-tabbar-item>
+</van-tabbar>

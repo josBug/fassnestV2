@@ -1,0 +1,82 @@
+<view class="title-view">
+  <van-toast id="van-toast" />
+  <text class="title">买家信息</text>
+  <van-cell-group>
+    <van-field
+      value="{{ name }}"
+      label="买家微信名"
+      placeholder="请输入买家名"
+      clearable
+      required
+      bind:change="onChangeName"
+    />
+  </van-cell-group>
+  <text class="title">商品信息</text>  
+  <van-cell-group>
+    <van-field
+      value="{{ goodsName }}"
+      label="商品名"
+      placeholder="请输入商品名"
+      clearable
+      required
+      bind:change="onChangeGoodsName"
+    />
+    <van-field
+      value="{{ code }}"
+      label="货号"
+      placeholder="请输入货号"
+      clearable
+      required
+      bind:change="onChangeCode"
+    />
+    <van-field
+      value="{{ tips }}"
+      label="代购费"
+      placeholder="请输入代购费"
+      clearable
+      required
+      type="digit"
+      bind:change="onChangeTips"
+    />
+    <van-field
+      value="{{ color }}"
+      label="颜色"
+      placeholder="请输入颜色"
+      clearable
+      required
+      bind:change="onChangeColor"
+    />
+    <van-field
+      value="{{ oldPrice }}"
+      label="原价"
+      placeholder="请输入价格"
+      clearable
+      required
+      type="digit"      
+      bind:change="onChangeOldPrice"
+    />
+    <van-field
+      value="{{ numbers }}"
+      label="数量"
+      placeholder="请输入数量"
+      clearable
+      required
+      type="number"
+      bind:change="onChangeNumbers"
+    />
+    <van-field
+      value="{{ remark }}"
+      label="备注"
+      placeholder="请输入备注"
+      clearable
+      required
+      bind:change="onChangeRemark"
+    />
+  </van-cell-group>
+    <view class="btn-view">
+  </view>
+  <van-button custom-class="search-btn-back" type="primary" size="large" bind:click="onClickSave">保存</van-button>
+  <view class="btn-view-bottom">
+  </view>
+  <van-button custom-class="search-btn-back" type="danger" size="large" bind:click="onclickCancel">取消</van-button>
+</view>

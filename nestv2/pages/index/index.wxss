@@ -1,0 +1,79 @@
+/**index.wxss**/
+.userinfo {
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 250px;
+}
+
+.userinfo-avatar {
+  width: 135px;
+  height: 92px;
+  margin-left: 50px;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 50px;
+}
+.input{
+    padding-left: 10px;
+    height: 44px;
+}
+
+.inputv1{
+    padding-left: 10px;
+    height: 44px;
+
+}
+
+.inputView{
+    border:  2px solid white;
+    border-radius: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    border-bottom-color: black;
+}
+
+.inputViewV1{
+    border:  2px solid white;
+    border-radius: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    border-bottom-color: black;
+    display: flex;
+    flex-direction: row;
+    width: 224px;
+}
+.send {
+  margin-left: 0px;
+  margin-top: 30px;
+}
+
+.btn1{
+  width: 200rpx;
+  height: 48rpx;
+  margin-top: 20rpx;
+  background-color: white;
+  color: #999999;
+  border-radius: 0rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+}
+
+.btnImg {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.btn1::after {
+  border: 0; 
+}

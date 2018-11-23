@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/search/search",
+    "pages/search-result/search-result",
+    "pages/edit/edit"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "栖息的代购小生意",
+    "navigationBarTextStyle": "black"
+  },
+  "debug": true,
+  "requiredBackgroundModes": [
+    "audio"
+  ]
+}

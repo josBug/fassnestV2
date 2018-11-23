@@ -1,0 +1,84 @@
+  <view wx:if="{{ !showLoad || clickSelected }}">
+  <wux-filterbar items="{{ items }}" bind:change="onChangeFilterBar" bind:open="onOpenFilterBar" bind:close="onCloseFilterBar" />
+  </view>
+  <view wx:if="{{ showLoad }}" class="container">
+  <van-loading custom-class="loading shadow" type="spinner" color="#fff" size="30px"/>  
+  </view>
+
+  <view wx:if="{{ !showLoad }}" style="height:550px" >
+  <van-toast id="van-toast" />
+  <wux-dialog id="wux-dialog" />
+  <van-popup show="{{ popShow }}" bind:close="onClosePop" custom-style="border-radius:200px;width:200px;height:300px;font-size:15px;color:#8B8386;">
+  <view style="margin-top: 20px;">
+  <text style="margin-left: 50px;font-size:23px;color:#EEB4B4;">代购统计</text>  
+  </view>
+  
+  <view style="margin-top: 20px;">
+  <text style="margin-left: 55px;">总计原价:{{ oldPrices }}元</text>
+  </view >
+  <view style="background-color: #c9c3c3e1;height:1px;width:170px;margin-left: 15px;"></view>
+  <view style="margin-top: 10px;">
+  <text style="margin-left: 55px;">总计代购费:{{ tips }}元</text>  
+  </view>
+  <view style="background-color: #c9c3c3e1;height:1px;width:170px;margin-left: 15px;"></view>
+  <view style="margin-top: 10px;">
+  <text style="margin-left: 55px;">总计数量:{{ amounts }}件</text>  
+  </view>
+  <view style="background-color: #c9c3c3e1;height:1px;width:170px;margin-left: 15px;"></view>
+  <view style="margin-top: 10px;">
+  <text style="margin-left: 55px;">总计卖出:{{ countPrices }}元</text>  
+  </view>
+  <view style="background-color: #c9c3c3e1;height:1px;width:170px;margin-left: 15px;"></view>
+  </van-popup>
+  <view wx:for="{{list}}" wx:key="unique">
+  <view style="background-color: white;height:5px;"></view>
+  <view id="up:{{ index }}" class="{{item.clickCard ? 'textAllSelect-press' : 'textAllSelect'}}" bindtap="onClickCard">
+  <van-checkbox id="checkbox:{{ index }}" value="{{ item.clickCard }}" bind:change="onSelected" custom-class="goods-checkbox">{{ item.name }}</van-checkbox>
+  <image id="scancode:{{ index }}" mode="widthFix" slot="icon" src="../../scancode.png" class="icon" bindtap="onSingleclickScanCode"/>
+  <text id="edit:{{ index }}" class="{{ item.editStart == false ? 'edit-text' : 'edit-text-press'}}" bindtouchstart="onEditStart" bindtouchend="onEditEnd">编辑</text>
+  </view> 
+  
+  <van-card
+  id="card:{{ index }}"
+  num="{{ item.amount }}"
+  price="{{ item.oldPrice }}"
+  title="{{ item.goodsName }}"
+  thumb-mode="widthFix"
+  thumb="../../jinggao.png"
+  custom-class="cardView"
+  bindtap="onClickCard"
+  isTap="{{ item.clickCard }}">
+    <view slot="desc">
+        <text>创建日期:{{ item.createAt }}</text>
+        <view>
+        <text class="cardText">备注:{{ item.remark }}</text>
+        </view>
+        <text style="color:green">货号:{{ item.code}}</text>
+    </view>
+    <view slot="tags">
+      <van-tag wx:if="{{ item.send === 1 }}" plain type="primary">已发货</van-tag>
+      <van-tag wx:if="{{ item.send === 0 }}" plain type="danger">未发货</van-tag>      
+      <van-tag wx:if="{{ item.isPay === 1 }}" plain type="primary">已付款</van-tag>
+      <van-tag wx:if="{{ item.isPay === 0 }}" plain type="danger">未付款</van-tag>      
+      <van-tag plain type="warning">{{ item.source }}</van-tag>
+      <van-tag plain type="warning">代购费:{{ item.tip }}</van-tag>
+      <van-tag plain type="warning">颜色:{{ item.color }}</van-tag>
+    </view>
+    <view slot="footer">
+    <van-row gutter="20">
+      <van-col span="8">
+      <text id="expresstext:{{ index }}" class="{{ item.startExpress ? 'expresscode-press' : 'expresscode' }}" bindtouchstart="onExpressClickStart" bindtouchend="onExpressClickEnd">快递单号:{{ item.expressCode }}</text>
+      </van-col>
+      <van-col span="8">
+      <van-button id="delete:{{ index }}" size="mini" plain type="danger" bindtap="onDeleteClick">删除</van-button>
+      </van-col>
+    </van-row>
+    
+    </view>
+  </van-card>
+  </view>
+  <i-load-more wx:if="{{ loadMore && showLoadIcon }}" i-class="loadText" tip="加载更多" loading="{{ true }}" />
+  <i-load-more wx:if="{{ !loadMore && showLoadIcon }}" i-class="loadText" tip="无更多数据" loading="{{ false }}" />
+    <wux-floating-button position="bottomRight" theme="dark" backdrop="true" buttons="{{ buttons }}" bind:change="onChangeFloadButton" bind:click="onClickFload" actionRotate="true"/>
+    <wux-floating-button position="bottomLeft" theme="dark" backdrop="true"  actionRotate="true" controlled visible="{{ statictisButtonVisible }}" bind:change="onClickFloatButton" action="../../statictis.png"/>
+  </view>

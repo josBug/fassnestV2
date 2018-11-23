@@ -1,0 +1,22 @@
+{
+  "usingComponents": {
+    "van-button": "../../dist/button/index",
+    "van-card": "../../dist/card/index",
+      "van-tabbar": "../../dist/tabbar/index",
+      "van-tabbar-item": "../../dist/tabbar-item/index",
+      "van-search": "../../dist/search/index",
+      "van-icon": "../../dist/icon/index",
+      "van-action-sheet": "../../dist/action-sheet/index",
+      "van-field": "../../dist/field/index",
+        "van-row": "../../dist/row/index",
+        "van-col": "../../dist/col/index",
+          "van-checkbox": "../../dist/checkbox/index",
+          "van-checkbox-group": "../../dist/checkbox-group/index",
+          "van-dialog": "../../dist/dialog/index",
+    "wux-floating-button": "../../dist/wuxdist/floating-button/index",
+    "i-avatar": "../../dist/dist/avatar/index"
+  },
+      "navigationBarBackgroundColor": "#2B2B2B",
+      "navigationBarTextStyle": "white",
+      "navigationBarTitleText": "商品信息"
+}

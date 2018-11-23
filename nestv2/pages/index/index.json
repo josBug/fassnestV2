@@ -1,0 +1,15 @@
+{
+    "usingComponents": {
+      "van-button": "../../dist/button/index",
+      "van-card": "../../dist/card/index",
+      "van-tabbar": "../../dist/tabbar/index",
+      "van-tabbar-item": "../../dist/tabbar-item/index",
+      "van-search": "../../dist/search/index",
+      "van-icon": "../../dist/icon/index",
+      "van-action-sheet": "../../dist/action-sheet/index",
+      "van-field": "../../dist/field/index"
+    },
+    "navigationBarBackgroundColor": "#2B2B2B",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "简代"
+}

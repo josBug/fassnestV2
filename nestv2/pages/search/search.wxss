@@ -1,0 +1,138 @@
+/* pages/search/search.wxss */
+
+.inputViewV1{
+    border:  2px solid white;
+    border-radius: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    border-bottom-color: black;
+    display: flex;
+    flex-direction: row;
+    width: 183px;
+}
+
+.inputv1{
+    padding-left: 10px;
+    height: 44px;
+
+}
+
+.add-goods {
+  margin-top: 50px;
+  margin-left: 280px;
+  width: 30px;
+  height: 30px;
+}
+.block-era {
+  width: 325px;
+  height: 550px;
+  background: white;
+  box-shadow: 0px 0px 5px #888888;
+}
+.btn1{
+  width: 100rpx;
+  height: 48rpx;
+  margin-top: 20rpx;
+  background-color: white;
+  color: #999999;
+  border-radius: 0rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+}
+
+.btnImg {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.btn1::after {
+  border: 0; 
+}
+
+.search-btn {
+  width: 290px;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+.weui-cell{
+    padding: 12px 15px 12px 35px;
+}
+.weui-form-preview{
+    margin-bottom: 25px;
+}
+
+.history {
+  color: #c9c3c3e1; 
+  margin-left: 15px;
+  font-size: 15px;
+}
+
+.inner-area {
+  border: 1px;
+  background-color: white;
+  height:130px;
+
+  width:300px;
+  margin-left: 15px;
+  box-shadow: 0px 0px 5px #888888;
+}
+
+.search-history {
+  width: 300px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+.search-historyv2 {
+  width: 300px;
+  height: 50px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.demo-checkbox-group {
+  margin: 10px 0 0 20px;
+}
+
+.demo-checkbox {
+  margin: 10px 0 0 20px;
+}
+
+.icon {
+  width: 20px;
+}
+
+.pick-text {
+  color: #717072d3;
+  font-size: 10px;
+  margin-left: 10px;
+}
+
+.none-text {
+  color: #717072d3;
+  font-size: 10px;
+  margin-left: 110px;
+}
+.add-goods-text {
+  color: #717072d3;
+  font-size: 10px;
+  margin-left: 280px;
+}
+.btn-search-history {
+display:inline-block;width:50px;height:22px;line-height:20px;font-size:2px;
+text-align: center;
+}
+
+.search-btn-back {
+  box-shadow: 0px 0px 9px #888888;  
+}

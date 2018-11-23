@@ -1,0 +1,28 @@
+{
+  "usingComponents": {
+    "van-button": "../../dist/button/index",
+    "van-card": "../../dist/card/index",
+    "van-loading": "../../dist/loading/index",
+    "van-tag": "../../dist/tag/index",
+    "van-checkbox": "../../dist/checkbox/index",
+    "van-submit-bar": "../../dist/submit-bar/index",
+    "i-load-more": "../../dist/dist/load-more/index",
+    "van-popup": "../../dist/popup/index",
+    "wux-floating-button": "../../dist/wuxdist/floating-button/index",
+    "wux-filterbar": "../../dist/wuxdist/filterbar/index",
+    "wux-popover": "../../dist/wuxdist/popover/index",
+        "i-collapse": "../../dist/dist/collapse/index",
+        "i-collapse-item": "../../dist/dist/collapse-item/index",
+                "wux-icon": "../../dist/wuxdist/icon/index",
+                "wux-button": "../../dist/wuxdist/button/index",
+                "van-toast": "../../dist/toast/index",
+                "wux-dialog": "../../dist/wuxdist/dialog/index"
+    
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarBackgroundColor": "#2B2B2B",      
+  "backgroundTextStyle": "dark",
+  "navigationBarTitleText": "搜索结果",
+  "onReachBottomDistance": 10,
+  "navigationBarTextStyle": "white"      
+}
