@@ -1,0 +1,62 @@
+<scroll-view class="scrol-list" scroll-y enable-back-to-top>
+<view wx:for="{{ addList }}" wx:key="{{ index }}">
+<view class="list-cell">
+<van-cell-group border="true">
+    <van-cell
+      title="{{ item.name }}"
+      clickable
+      border
+      bind:click="onClickCheckBox"
+      id = "checkBox:{{ index }}"
+    >
+      <van-checkbox value="{{ item.checkCell }}"/>
+    </van-cell>
+    <van-cell
+    id = "cell:{{ index }}"
+    title="{{ item.goodsName }}"
+    value="x{{ item.amount }}"
+    size="large"
+    label="货号:{{ item.code }} 原价:{{ item.oldPrice }} 颜色:{{ item.color }}"
+    is-link
+    border
+    icon="shop"
+    bind:click="onClickEdit"
+    />
+</van-cell-group>
+</view>
+</view>
+
+<view style="margin-top: 5px;width:98%;margin-left:3px;">
+  <wux-button block outline size="large" type="stable" bind:click="onClickNewGoods"><wux-icon type="ios-add" size="20" />添加商品</wux-button>
+</view>
+<view wx:if="{{ addList.length === 0}}" style="margin-top: 200px;">
+  <text class="text-area">目前商品列表为空，请及时录入商品</text>
+</view>
+</scroll-view>
+  <view class="bottom-label">
+  <van-row>
+  <van-col span="8">
+  <view style="margin-top:8px;margin-left:8px;">
+      <van-checkbox  value="{{ checked }}" bind:change="selectAll" checked-color="#4b0">
+    <text class="all-select-font">全选</text>
+    </van-checkbox>
+  </view>
+  </van-col>
+
+  <van-col offset="1" span="4">
+    <view style="margin-top:8px;">
+      <van-button custom-class="operator" type="danger" size="small">删除</van-button>    
+    </view>
+  </van-col>
+    <van-col offset="1" span="4">
+    <view style="margin-top:8px;">
+      <van-button custom-class="operator" type="warning" size="small">复制</van-button>    
+    </view>
+  </van-col>
+    <van-col offset="1" span="4">
+    <view style="margin-top:8px;">
+      <van-button custom-class="operator" type="primary" size="small">提交</van-button>    
+    </view>
+  </van-col>
+</van-row>
+  </view>

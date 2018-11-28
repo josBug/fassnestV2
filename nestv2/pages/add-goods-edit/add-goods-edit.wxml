@@ -56,7 +56,7 @@
       bind:change="onChangeOldPrice"
     />
     <van-field
-      value="{{ numbers }}"
+      value="{{ amount }}"
       label="数量"
       placeholder="请输入数量"
       clearable
@@ -72,10 +72,20 @@
       required
       bind:change="onChangeRemark"
     />
+    <van-switch-cell
+      title="是否发货"
+      checked="{{ send === 1 }}"
+      bind:change="onChangeSend"
+    />
+    <van-switch-cell
+      title="是否支付"
+      checked="{{ isPay === 1 }}"
+      bind:change="onChangeIsPay"
+    />
   </van-cell-group>
     <view class="btn-view">
   </view>
-  <van-button custom-class="search-btn-back" type="primary" size="large" bind:click="onClickSave">保存</van-button>
+  <van-button custom-class="search-btn-back" type="primary" size="large" bind:click="onClickSave">添加</van-button>
   <view class="btn-view-bottom">
   </view>
   <van-button custom-class="search-btn-back" type="danger" size="large" bind:click="onclickCancel">取消</van-button>

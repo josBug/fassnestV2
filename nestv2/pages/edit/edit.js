@@ -24,15 +24,15 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id:options.id,
-      index: options.index,
+      id:parseInt(options.id),
+      index: parseInt(options.index),
       name: options.name,
       goodsName: options.goodsName,
       code: options.code,
-      tips: options.tips,
+      tips: parseFloat(options.tips),
       color: options.color,
-      oldPrice: options.oldPrice,
-      numbers: options.numbers,
+      oldPrice: parseFloat(options.oldPrice),
+      numbers: parseInt(options.numbers),
       remark: options.remark === '空' ? '' : options.remark
     })
   },
@@ -111,30 +111,49 @@ Page({
   },
   onChangeName: function(e) {
     console.log(e.detail)
+    this.setData({
+      name: e.detail
+    })
   },
   onChangeGoodsName: function (e) {
-
+    this.setData({
+      goodsName: e.detail
+    })
   }, 
   onChangeCode: function (e) {
-
+    this.setData({
+      code: e.detail
+    })
   }, 
   onChangeTips: function (e) {
-
+    this.setData({
+      tips: parseFloat(e.detail)
+    })
   }, 
   onChangeColor: function (e) {
-
+    this.setData({
+      color: e.detail
+    })
   }, 
   onChangeOldPrice: function (e) {
-
+    this.setData({
+      oldPrice: parseFloat(e.detail)
+    })
   }, 
   onChangeNumbers: function (e) {
-
+    this.setData({
+      numbers: parseInt(e.detail)
+    })
   },
   onclickCancel: function(e) {
-
+    wx.navigateBack({
+      delta: 1
+    })
   },
   onChangeRemark: function(e) {
-
+    this.setData({
+      remark: e.detail
+    })
   },
   updateEdit: function(index, param) {
     wx.showLoading({
@@ -174,6 +193,22 @@ Page({
             [amountTemp]: this.data.numbers,
             [remarkTemp]: this.data.remark == '' ? '空' : this.data.remark
           })
+          var param = {
+            "ver": "1.0",
+            "session": "",
+            "userName": "",
+            "object": {
+              "goodsName": prevPage.data.goodsName,
+              "name": prevPage.data.name,
+              "id": 0,
+              "isPay": prevPage.data.isPay === true ? 1 : 0,
+              "isSend": prevPage.data.isSend === true ? 1 : 0,
+              "startTime": prevPage.data.startTime + " " + "00:00:00",
+              "endTime": prevPage.data.endTime + " " + "00:00:00",
+              "sort": prevPage.data.sort
+            }
+          }
+          prevPage.getStatistic(param)
           wx.navigateBack({
             delta: 1
           })

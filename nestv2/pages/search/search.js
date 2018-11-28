@@ -39,7 +39,7 @@ Page({
     history_show_name: false,
     buttons: [
       {
-      label: '添加商品',
+      label: '录入商品',
         icon: "../../goods_float.png"
     },
     {
@@ -51,9 +51,9 @@ Page({
   },
   onClick(e) {
     console.log('onClick', e.detail)
-    if (e.detail.index === 3) {
-      wx.switchTab({
-        url: '/pages/index/index'
+    if (e.detail.index === 0) {
+      wx.navigateTo({
+        url: '../add-goods-list/add-goods-list',
       })
     }
   },
