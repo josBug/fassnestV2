@@ -17,7 +17,12 @@ Page({
     remark: '',
     send:0,
     isPay:0,
-    btnText:'添加'
+    btnText:'添加',
+    inputNameTag:false,
+    inputGoodsNameTag: false,
+    inputTipsTag: false,
+    inputOldPriceTag: false,
+    inputAmountTag: false
   },
 
   /**
@@ -92,17 +97,54 @@ Page({
 
   },
   onClickSave: function (e) {
+    var isEmpty = false;
+    if (this.data.name === '') {
+      isEmpty = true
+      this.setData({
+        inputNameTag: true
+      })
+    }
+    if (this.data.goodsName === '') {
+      isEmpty = true
+      this.setData({
+        inputGoodsNameTag: true
+      })
+    }
+    if (this.data.tips === '' || this.data.tips <= 0) {
+      isEmpty = true
+      this.setData({
+        inputTipsTag: true
+      })
+    }
+    if (this.data.oldPrice === '' || this.data.oldPrice <= 0) {
+      isEmpty = true
+      this.setData({
+        inputOldPriceTag: true
+      })
+    }
+    if (this.data.amount === '' || this.data.amount <= 0) {
+      isEmpty = true
+      this.setData({
+        inputAmountTag: true
+      })
+    }
+    if (isEmpty) {
+      return;
+    }
     this.updateEdit(this.data.index)
   },
   onChangeName: function (e) {
     console.log(e.detail)
+     
     this.setData({
-      name: e.detail
+      name: e.detail,
+      inputNameTag:true
     })
   },
   onChangeGoodsName: function (e) {
     this.setData({
-      goodsName: e.detail
+      goodsName: e.detail,
+      inputGoodsNameTag:true
     })
   },
   onChangeCode: function (e) {
@@ -111,9 +153,12 @@ Page({
     })
   },
   onChangeTips: function (e) {
+    console.log(e.detail)
     this.setData({
-      tips: parseFloat(e.detail)
+      tips: parseFloat(e.detail === '' ? 0 : e.detail),
+      inputTipsTag: true
     })
+    console.log(this.data.tips)
   },
   onChangeColor: function (e) {
     this.setData({
@@ -122,12 +167,14 @@ Page({
   },
   onChangeOldPrice: function (e) {
     this.setData({
-      oldPrice: parseFloat(e.detail)
+      oldPrice: parseFloat(e.detail === '' ? 0 : e.detail),
+      inputOldPriceTag:true
     })
   },
   onChangeNumbers: function (e) {
     this.setData({
-      amount: parseInt(e.detail)
+      amount: parseInt(e.detail === '' ? 0 : e.detail),
+      inputAmountTag:true
     })
   },
   onclickCancel: function (e) {
@@ -167,16 +214,17 @@ Page({
         addList: tempList
       })
     } else {
-      var nameTemp = 'list[' + index + '].name'
-      var goodsNameTemp = 'list[' + index + '].goodsName'
-      var codeTemp = 'list[' + index + '].code'
-      var tipTemp = 'list[' + index + '].tips'
-      var colorTemp = 'list[' + index + '].color'
-      var oldPriceTemp = 'list[' + index + '].oldPrice'
-      var amountTemp = 'list[' + index + '].amount'
-      var remarkTemp = 'list[' + index + '].remark'
-      var sendTemp = 'list[' + index + '].send'
-      var isPayTemp = 'list[' + index + '].isPay'
+      console.log(this.data.oldPrice)
+      var nameTemp = 'addList[' + index + '].name'
+      var goodsNameTemp = 'addList[' + index + '].goodsName'
+      var codeTemp = 'addList[' + index + '].code'
+      var tipTemp = 'addList[' + index + '].tips'
+      var colorTemp = 'addList[' + index + '].color'
+      var oldPriceTemp = 'addList[' + index + '].oldPrice'
+      var amountTemp = 'addList[' + index + '].amount'
+      var remarkTemp = 'addList[' + index + '].remark'
+      var sendTemp = 'addList[' + index + '].send'
+      var isPayTemp = 'addList[' + index + '].isPay'
 
       prevPage.setData({
         [nameTemp]: this.data.name,
@@ -199,7 +247,7 @@ Page({
     })
   },
   onChangeSend: function(e) {
-    if (this.data.send === 0) {
+    if (this.data.send === 0 || this.data.send === '') {
         this.setData({
           send:1
         })
@@ -210,7 +258,7 @@ Page({
     }
   },
   onChangeIsPay: function(e) {
-    if (this.data.isPay === 0) {
+    if (this.data.isPay === 0 || this.data.isPay === '') {
       this.setData({
         isPay: 1
       })

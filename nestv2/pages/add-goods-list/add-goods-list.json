@@ -19,7 +19,8 @@
             "wux-icon": "../../dist/wuxdist/icon/index",
             "wux-button": "../../dist/wuxdist/button/index",
               "van-cell": "../../dist/cell/index",
-              "van-cell-group": "../../dist/cell-group/index"
+              "van-cell-group": "../../dist/cell-group/index",
+                "wux-dialog": "../../dist/wuxdist/dialog/index"
   },
   "navigationBarBackgroundColor": "#2B2B2B",
   "navigationBarTextStyle": "white",

@@ -8,6 +8,7 @@
       placeholder="请输入买家名"
       clearable
       required
+      error-message="{{ inputNameTag && name === '' ? '买家名不能为空' : '' }}"
       bind:change="onChangeName"
     />
   </van-cell-group>
@@ -19,6 +20,7 @@
       placeholder="请输入商品名"
       clearable
       required
+      error-message="{{ inputGoodsNameTag && goodsName === '' ? '商品名不能为空' : ''  }}"
       bind:change="onChangeGoodsName"
     />
     <van-field
@@ -26,7 +28,6 @@
       label="货号"
       placeholder="请输入货号"
       clearable
-      required
       bind:change="onChangeCode"
     />
     <van-field
@@ -36,6 +37,7 @@
       clearable
       required
       type="digit"
+      error-message="{{ inputTipsTag && (tips === '' || tips === 0) ? '代购费不能为空' : ''  }}"
       bind:change="onChangeTips"
     />
     <van-field
@@ -43,7 +45,6 @@
       label="颜色"
       placeholder="请输入颜色"
       clearable
-      required
       bind:change="onChangeColor"
     />
     <van-field
@@ -52,7 +53,8 @@
       placeholder="请输入价格"
       clearable
       required
-      type="digit"      
+      type="digit"
+      error-message="{{ inputOldPriceTag && (oldPrice === '' || oldPrice === 0) ? '原价不能为空' : ''  }}"
       bind:change="onChangeOldPrice"
     />
     <van-field
@@ -62,6 +64,7 @@
       clearable
       required
       type="number"
+      error-message="{{ inputAmountTag && (amount === '' || amount === 0) ? '数量不能为空' : ''  }}"
       bind:change="onChangeNumbers"
     />
     <van-field
@@ -69,7 +72,6 @@
       label="备注"
       placeholder="请输入备注"
       clearable
-      required
       bind:change="onChangeRemark"
     />
     <van-switch-cell
@@ -85,7 +87,7 @@
   </van-cell-group>
     <view class="btn-view">
   </view>
-  <van-button custom-class="search-btn-back" type="primary" size="large" bind:click="onClickSave">添加</van-button>
+  <van-button custom-class="search-btn-back" type="primary" size="large" bind:click="onClickSave">{{ btnText }}</van-button>
   <view class="btn-view-bottom">
   </view>
   <van-button custom-class="search-btn-back" type="danger" size="large" bind:click="onclickCancel">取消</van-button>

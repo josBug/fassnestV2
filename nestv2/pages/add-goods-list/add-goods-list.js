@@ -1,4 +1,6 @@
 // pages/add-goods-list/add-goods-list.js
+import { $wuxDialog } from '../../dist/wuxdist/index'
+
 Page({
 
   /**
@@ -67,6 +69,12 @@ Page({
     this.setData({
       checked:!this.data.checked
     })
+    for (var i = 0; i < this.data.addList.length; ++ i) {
+      var checkCellTemp = "addList[" + i + "].checkCell"
+      this.setData({
+        [checkCellTemp]: this.data.checked
+      })
+    }
   },
   onClickCheckBox: function(e) {
     console.log(e)
@@ -91,7 +99,42 @@ Page({
     var idstring = spliceId.split(":")[1];
     var index = parseInt(idstring);
     wx.navigateTo({
-      url: '../add-goods-edit/add-goods-edit?index=' + index ,
+      url: '../add-goods-edit/add-goods-edit?index=' + index + '&name=' + this.data.addList[index].name + '&goodsName=' + this.data.addList[index].goodsName + '&code=' + this.data.addList[index].code + '&tips=' + this.data.addList[index].tips + '&color=' + this.data.addList[index].color + '&oldPrice=' + this.data.addList[index].oldPrice + '&amount=' + this.data.addList[index].amount + '&remark=' + this.data.addList[index].remark + '&send=' + this.data.addList[index].send + '&isPay=' + this.data.addList[index].isPay,
+    })
+  },
+  onClickDelete: function(e) {
+    $wuxDialog().confirm({
+      resetOnClose: true,
+      closable: true,
+      title: '是否删除',
+      content: '确定删除商品信息吗?',
+      onConfirm: confirm => {
+        var tempList = this.data.addList;
+        tempList = tempList.filter(item => item.checkCell === false)
+        this.setData({
+          addList: tempList
+        })
+      },
+      onCancel: cancel => {
+      },
+    })
+
+  },
+  onClickCopy: function(e) {
+    var tempList = [];
+    for (var i = 0; i < this.data.addList.length; ++i) {
+      if (this.data.addList[i].checkCell === true) {
+        tempList.push(JSON.parse(JSON.stringify(this.data.addList[i])))
+      }
+    }
+
+    console.log(tempList.length)
+    for (var i = 0; i < tempList.length; ++i) {
+      tempList[i].checkCell = false
+    }
+    console.log(this.data.addList[0].checkCell)
+    this.setData({
+      addList: this.data.addList.concat(tempList)
     })
   }
 })
