@@ -1,5 +1,6 @@
 <scroll-view class="scrol-list" scroll-y enable-back-to-top>
 <wux-dialog id="wux-dialog" />
+  <van-toast id="van-toast" />
 <view wx:for="{{ addList }}" wx:key="{{ index }}">
 <view class="list-cell">
 <van-cell-group border="true">
@@ -56,7 +57,7 @@
   </van-col>
     <van-col offset="1" span="4">
     <view style="margin-top:8px;">
-      <van-button custom-class="operator" type="primary" size="small">提交</van-button>    
+      <van-button custom-class="operator" type="primary" size="small" bind:click="onClickSubmit">提交</van-button>    
     </view>
   </van-col>
 </van-row>

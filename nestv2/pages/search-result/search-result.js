@@ -206,7 +206,7 @@ Page({
         "isPay": this.data.isPay === true ? 1 : 0,
         "isSend": this.data.isSend === true ? 1 : 0,
         "startTime": this.data.startTime + " " + "00:00:00",
-        "endTime": this.data.endTime + " " + "00:00:00",
+        "endTime": this.data.endTime + " " + "23:59:59",
         "sort": this.data.sort
       }
     }

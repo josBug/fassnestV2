@@ -11,6 +11,7 @@
     "van-row": "../../dist/row/index",
     "van-col": "../../dist/col/index",
     "van-checkbox": "../../dist/checkbox/index",
+    "van-toast": "../../dist/toast/index",
     "van-checkbox-group": "../../dist/checkbox-group/index",
     "van-dialog": "../../dist/dialog/index",
     "wux-floating-button": "../../dist/wuxdist/floating-button/index",
