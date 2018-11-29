@@ -1,5 +1,7 @@
 import Toast from '../../dist/toast/toast';
 
+
+
 Page({
 
   /**
