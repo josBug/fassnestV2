@@ -136,3 +136,52 @@ text-align: center;
 .search-btn-back {
   box-shadow: 0px 0px 9px #888888;  
 }
+
+.list-cell{
+  margin-top: 0px;width:100%;
+  border-bottom: 1px solid #26262617;
+}
+
+.container-v2 {
+  height: 100%;
+  width:100%;
+  overflow-x:hidden;
+}
+
+.cell-image {
+  width: 20px;
+  height: 20px;
+}
+
+.image-view {
+  width: 20px;
+  height: 20px;
+}
+
+.title-font {
+  color: #262626; 
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.total-font {
+  color: #262626; 
+  font-size: 10px;
+}
+
+.total-number-font {
+  color: #2626263d; 
+  font-size: 14px;
+}
+
+.bottom-text {
+  color: #2626263d;
+  width: 100%; 
+  font-size: 9px;
+}
+
+.bottom-view {
+  margin-top: 300px;
+  width: 100%; 
+  margin-left: 170px;
+}

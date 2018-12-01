@@ -12,9 +12,14 @@
         "van-col": "../../dist/col/index",
           "van-checkbox": "../../dist/checkbox/index",
           "van-checkbox-group": "../../dist/checkbox-group/index",
+          "van-cell": "../../dist/cell/index",
           "van-dialog": "../../dist/dialog/index",
     "wux-floating-button": "../../dist/wuxdist/floating-button/index",
-    "i-avatar": "../../dist/dist/avatar/index"
+    "i-avatar": "../../dist/dist/avatar/index",
+    "wux-image": "../../dist/wuxdist/image/index",
+    "wux-avatar": "../../dist/wuxdist/avatar/index",
+            "wux-grids": "../../dist/wuxdist/grids/index",
+            "wux-grid": "../../dist/wuxdist/grid/index"
   },
       "navigationBarBackgroundColor": "#2B2B2B",
       "navigationBarTextStyle": "white",

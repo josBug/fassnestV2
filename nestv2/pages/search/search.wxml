@@ -114,7 +114,48 @@
 <van-dialog id="van-dialog" closeOnClickOverlay="true" overlay="true"/>
 
 </view>
-
+<view class="container-v2" style="height:550px" wx:if="{{tag == 'info'}}">
+<view class="list-cell">
+  <van-cell
+  value="详细信息"
+  is-link
+>
+  <view slot="title">
+    <wux-avatar size="large">Y</wux-avatar>
+    <text class="title-font">刘怡</text>
+  </view>
+</van-cell>
+</view>
+<wux-grids>
+  <wux-grid>
+      <text class="total-number-font">0件</text>
+      <view>
+      <text class="total-font">本月售出总数</text>
+      </view>
+  </wux-grid>
+  <wux-grid>
+      <text class="total-number-font">0.0元</text>
+      <view>
+      <text class="total-font">本月售出金额</text>
+      </view>
+  </wux-grid>
+  <wux-grid>
+      <text class="total-number-font">0.0元</text>
+      <view>
+      <text class="total-font">本月总代购费</text>
+      </view>
+  </wux-grid>
+</wux-grids>
+<view class="list-cell">
+<van-cell
+  title="关于作者"
+  is-link
+/>
+</view>
+<view class="bottom-view">
+<text class="bottom-text">特别鸣谢</text>
+</view>
+</view>
 <van-tabbar active="{{ active }}" bind:change="onChange">
 
   <van-tabbar-item>

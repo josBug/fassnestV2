@@ -41,13 +41,12 @@ Page({
       {
       label: '录入商品',
         icon: "../../goods_float.png"
-    },
-    {
-      label: '添加收货地址',
-      icon: "../../recevie.png"
-      
-    }
-    ]
+      }
+    ],
+    totalAmount:0,
+    totalTips: 0,
+    totalOldPrice: 0,
+
   },
   onClick(e) {
     console.log('onClick', e.detail)
@@ -135,7 +134,7 @@ Page({
       })
     } else {
       this.setData({
-        tag: 'input'
+        tag: 'info'
       })
     }
   },
