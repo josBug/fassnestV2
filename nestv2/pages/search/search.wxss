@@ -139,7 +139,8 @@ text-align: center;
 
 .list-cell{
   margin-top: 0px;width:100%;
-  border-bottom: 1px solid #26262617;
+  border-bottom: 1rpx solid #26262617;
+  border-top: 1rpx solid #26262617;
 }
 
 .container-v2 {

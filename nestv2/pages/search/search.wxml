@@ -127,19 +127,19 @@
 </van-cell>
 </view>
 <wux-grids>
-  <wux-grid>
+  <wux-grid bordered>
       <text class="total-number-font">0件</text>
       <view>
       <text class="total-font">本月售出总数</text>
       </view>
   </wux-grid>
-  <wux-grid>
+  <wux-grid bordered>
       <text class="total-number-font">0.0元</text>
       <view>
       <text class="total-font">本月售出金额</text>
       </view>
   </wux-grid>
-  <wux-grid>
+  <wux-grid bordered>
       <text class="total-number-font">0.0元</text>
       <view>
       <text class="total-font">本月总代购费</text>

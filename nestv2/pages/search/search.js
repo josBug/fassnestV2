@@ -46,7 +46,7 @@ Page({
     totalAmount:0,
     totalTips: 0,
     totalOldPrice: 0,
-
+    totalCountPrice: 0
   },
   onClick(e) {
     console.log('onClick', e.detail)
