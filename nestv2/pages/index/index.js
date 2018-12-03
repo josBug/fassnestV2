@@ -10,13 +10,19 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     session:null,
     userName:'',
-    passWd:'',
+    password:'',
     code:'',
     condition:true,
     countDownNum:60,
     timer: '',
     btnText:'发送验证码',
-    disabled:false
+    disabled:false,
+    isLogin:true,
+    registryUserName:"",
+    registryPasswd:"",
+    registryEmail:"",
+    loginErrorMessage:"",
+    registryErrorMessage:""
   },
   //事件处理函数
   bindViewTap: function() {
@@ -129,6 +135,36 @@ Page({
           //关闭定时器之后，可作其他处理codes go here
         }
       }, 1000)
+    })
+  },
+  onClickRegistry: function(e) {
+    this.setData({
+      isLogin:false
+    })
+  },
+  onChangeLoginUserName: function(e) {
+    this.setData({
+      userName:e.detail.value
+    })
+  },
+  onChangeLoginPasswd: function (e) {
+    this.setData({
+      password: e.detail.value
+    })
+  },
+  onChangeLoginEmailCode: function (e) {
+    this.setData({
+      code: e.detail.value
+    })
+  },
+  registrySystem: function(e) {
+    this.setData({
+      isLogin: true
+    })
+  },
+  cancelRegistry: function(e) {
+    this.setData({
+      isLogin: true
     })
   }
 })

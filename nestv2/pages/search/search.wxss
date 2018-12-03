@@ -182,7 +182,7 @@ text-align: center;
 }
 
 .bottom-view {
-  margin-top: 300px;
+  margin-top: 40px;
   width: 100%; 
   margin-left: 170px;
 }

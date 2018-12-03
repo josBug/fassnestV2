@@ -19,7 +19,8 @@
     "wux-image": "../../dist/wuxdist/image/index",
     "wux-avatar": "../../dist/wuxdist/avatar/index",
             "wux-grids": "../../dist/wuxdist/grids/index",
-            "wux-grid": "../../dist/wuxdist/grid/index"
+            "wux-grid": "../../dist/wuxdist/grid/index",
+                "wux-button": "../../dist/wuxdist/button/index"
   },
       "navigationBarBackgroundColor": "#2B2B2B",
       "navigationBarTextStyle": "white",

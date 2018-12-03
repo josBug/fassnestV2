@@ -152,6 +152,9 @@
   is-link
 />
 </view>
+<view style="margin-top: 200px;width:80%;margin-left:40px;">
+  <wux-button block size="default" type="assertive" bind:click="onClickNewGoods">退出登录</wux-button>
+</view>
 <view class="bottom-view">
 <text class="bottom-text">特别鸣谢</text>
 </view>

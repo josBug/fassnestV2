@@ -7,7 +7,10 @@
       "van-search": "../../dist/search/index",
       "van-icon": "../../dist/icon/index",
       "van-action-sheet": "../../dist/action-sheet/index",
-      "van-field": "../../dist/field/index"
+      "van-field": "../../dist/field/index",
+                "wux-button": "../../dist/wuxdist/button/index",
+                  "van-row": "../../dist/row/index",
+                  "van-col": "../../dist/col/index"
     },
     "navigationBarBackgroundColor": "#2B2B2B",
     "navigationBarTextStyle": "white",
