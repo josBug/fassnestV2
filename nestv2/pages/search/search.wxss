@@ -162,7 +162,7 @@ text-align: center;
 .title-font {
   color: #262626; 
   font-size: 18px;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .total-font {
@@ -182,7 +182,7 @@ text-align: center;
 }
 
 .bottom-view {
-  margin-top: 40px;
+  margin-top: 10px;
   width: 100%; 
   margin-left: 170px;
 }
