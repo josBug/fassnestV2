@@ -1,0 +1,35 @@
+<view class="container" style='padding:0px'>
+<view class="userinfo" style='margin-top:50px;margin-left:30px;'>
+  <image class="userinfo-avatar" src="../../logo2.png" mode="Widthfix"></image>
+</view>
+<van-cell-group>
+  <van-field
+    value="{{ registryUserName }}"
+    required
+    clearable
+    label="用户名"
+    placeholder="请输入用户名"
+    bind:change="onChangeRegistryUserName"
+    error-message="{{ registryErrorMessage }}"
+  />
+  <van-field
+    value="{{ registryPasswd }}"
+    type="password"
+    label="密码"
+    placeholder="请输入密码"
+    required
+    border="{{ false }}"
+    bind:change="onChangeRegistryPasswd"
+  />
+  <van-field
+    value="{{ registryEmail }}"
+    required
+    clearable
+    label="邮箱"
+    placeholder="请输入邮箱"
+    border="{{ false }}"
+    bind:change="onChangeRegistryEmail"
+  />
+</van-cell-group>
+  <van-button class="send" size="normal" type="primary" bindtap="registrySystem">注册账号</van-button>
+</view>

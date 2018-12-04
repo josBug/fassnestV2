@@ -5,7 +5,8 @@
     "pages/search-result/search-result",
     "pages/edit/edit",
     "pages/add-goods-list/add-goods-list",
-    "pages/add-goods-edit/add-goods-edit"
+    "pages/add-goods-edit/add-goods-edit",
+    "pages/registry/registry"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
