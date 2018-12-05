@@ -67,9 +67,42 @@ Page({
 
   },
   registrySystem: function (e) {
-    wx.navigateBack({
-      delta: 1
+    var registryParam = {
+      "ver": "1.0",
+      "object": {
+        "userName": this.data.userName,
+        "passwd": this.data.passwd,
+        "email": this.data.email
+      }
+    }
+    wx.showLoading({
+      title: '请稍后...',
+      mask:true
     })
+    wx.request({
+      url: 'https://www.lywss.top/registry',
+      data: JSON.stringify(registryParam),
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      method: "POST",
+      success: res => {
+        console.log(res.data);
+        if (res.data.code == 200) {
+          
+          wx.hideLoading();
+          wx.navigateBack({
+            delta: 1
+          })
+        } else {
+          registryErrorMessage = '用户已注册'
+          this.setData({
+            registryPasswd: ''
+          })
+        }
+      }
+    })
+
   },
   onChangeRegistryUserName: function(e) {
     this.setData({

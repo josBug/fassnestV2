@@ -12,7 +12,7 @@ Page({
     timer: '',
     btnText:'发送验证码',
     disabled:false,
-    loginErrorMessage:"",
+    loginErrorMessage:""
   },
   onLoad: function () {
 
