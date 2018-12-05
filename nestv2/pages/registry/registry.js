@@ -1,4 +1,6 @@
 // pages/registry/registry.js
+import Toast from '../../dist/toast/toast';
+
 Page({
 
   /**
@@ -6,6 +8,7 @@ Page({
    */
   data: {
     registryErrorMessage: "",
+    registryErrorPasswd: "",
     registryUserName: "",
     registryPasswd: "",
     registryEmail: ""
@@ -70,9 +73,9 @@ Page({
     var registryParam = {
       "ver": "1.0",
       "object": {
-        "userName": this.data.userName,
-        "passwd": this.data.passwd,
-        "email": this.data.email
+        "userName": this.data.registryUserName,
+        "passwd": this.data.registryPasswd,
+        "email": this.data.registryEmail
       }
     }
     wx.showLoading({
@@ -89,15 +92,20 @@ Page({
       success: res => {
         console.log(res.data);
         if (res.data.code == 200) {
-          
+          Toast.success("注册成功!")
           wx.hideLoading();
           wx.navigateBack({
             delta: 1
           })
-        } else {
-          registryErrorMessage = '用户已注册'
+        } else if (res.data.code == 1000){
           this.setData({
-            registryPasswd: ''
+            registryPasswd: '',
+            registryErrorPasswd: "密码不符合规范"
+          })
+        } else {
+          this.setData({
+            registryPasswd: '',
+            registryErrorMessage: '用户已注册'
           })
         }
       }

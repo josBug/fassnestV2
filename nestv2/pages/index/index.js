@@ -1,10 +1,11 @@
 //index.js
+import Toast from '../../dist/toast/toast';
+
 //获取应用实例
 const app = getApp()
 
 Page({
   data: {
-    session:null,
     userName:'',
     password:'',
     code:'',
@@ -15,12 +16,71 @@ Page({
     loginErrorMessage:""
   },
   onLoad: function () {
+    this.setData({
+      loginErrorMessage:"",
+      userName:"",
+      password:"",
+      code: ''
+    })
+    this.setData({
+      countDownNum: 60,
+      btnText: '发送验证码',
+      disabled: false
+    })
+  },
+  onShow: function () {
+    this.setData({
+      loginErrorMessage: "",
+      userName: "",
+      password: "",
+      code: ''
+    })
+    this.setData({
+      countDownNum: 60,
+      btnText: '发送验证码',
+      disabled: false
+    })
+    clearInterval(this.data.timer);
 
   },
   loginSystem: function() {
-    wx.navigateTo({
-      url: '../search/search'
+    var loginParam = {
+      "ver": "1.0",
+      "object": {
+        "userName": this.data.userName,
+        "passwd": this.data.password,
+        "emailCode": this.data.code
+      }
+    }
+    wx.showLoading({
+      title: '登录中...',
+      mask: true
     })
+    wx.request({
+      url: 'https://www.lywss.top/check/user',
+      data: JSON.stringify(loginParam),
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      method: "POST",
+      success: res => {
+        console.log(res.data);
+        if (res.data.code == 200) {
+          Toast.success("登录成功!")
+          wx.hideLoading();
+          wx.setStorageSync("session", res.data.result)
+          wx.navigateTo({
+            url: '../search/search'
+          })
+        } else {
+          this.setData({
+            password: '',
+            loginErrorMessage: '登录失败，请检查用户名密码'
+          })
+        }
+      }
+    })
+
   },
   bindInputUser: function(e) {
     this.setData({
@@ -30,7 +90,7 @@ Page({
   bindInputPasswd: function(e) {
     console.log(e.detail.value)
     this.setData({
-      passWd: e.detail.value
+      password: e.detail.value
     })
   },
   bindInputCode: function(e) {
@@ -49,6 +109,32 @@ Page({
     if (countDownNum < 60) {
       return;
     }
+    var registryParam = {
+      "ver": "1.0",
+      "object": {
+        "userName": this.data.userName,
+        "passwd": this.data.password
+      }
+    }
+    wx.request({
+      url: 'https://www.lywss.top/send/code',
+      data: JSON.stringify(registryParam),
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      method: "POST",
+      success: res => {
+        console.log(res.data);
+        if (res.data.code == 200) {
+          Toast.success("发送成功!请查看邮箱验证码")
+        } else {
+          this.setData({
+            password: '',
+            loginErrorMessage: '发送失败，请检查用户名密码'
+          })
+        }
+      }
+    })
     that.setData({
       timer: setInterval(() => {//这里把setInterval赋值给变量名为timer的变量
         //每隔一秒countDownNum就减一，实现同步

@@ -75,6 +75,27 @@ Page({
       searchStorage: wx.getStorageSync('searchData'),
       searchStorageName: wx.getStorageSync('searchStorageName')
     });
+    var registryParam = {
+      "ver": "1.0",
+      "session":wx.getStorageSync("session")
+    }
+    wx.request({
+      url: 'https://www.lywss.top/month/statistic',
+      data: JSON.stringify(registryParam),
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      method: "POST",
+      success: res => {
+        console.log(res.data);
+        this.setData({
+          totalAmount: res.data.amount,
+          totalTips: res.data.tips,
+          totalOldPrice: res.data.oldPrice,
+          totalCountPrice: res.data.countPrice
+        })
+      }
+    })
   },
 
   /**

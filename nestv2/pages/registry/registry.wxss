@@ -78,3 +78,12 @@
 .btn1::after {
   border: 0; 
 }
+
+.pwsswd-area{
+  font-size: 10px;
+  color: #888888;
+  width: 98%;
+  height: 35px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
