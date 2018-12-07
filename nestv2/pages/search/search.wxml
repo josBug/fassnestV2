@@ -115,32 +115,34 @@
 
 </view>
 <view class="container-v2" style="height:550px" wx:if="{{tag == 'info'}}">
+  <van-toast id="van-toast" />
+
 <view class="list-cell">
   <van-cell
   value="详细信息"
   is-link
 >
   <view slot="title">
-    <wux-avatar size="large">Y</wux-avatar>
-    <text class="title-font">刘怡</text>
+    <wux-avatar size="large">{{ userTitle }}</wux-avatar>
+    <text class="title-font">{{ userName }}</text>
   </view>
 </van-cell>
 </view>
 <wux-grids>
   <wux-grid bordered>
-      <text class="total-number-font">0件</text>
+      <text class="total-number-font">{{ totalAmount }}件</text>
       <view>
       <text class="total-font">本月售出总数</text>
       </view>
   </wux-grid>
   <wux-grid bordered>
-      <text class="total-number-font">0.0元</text>
+      <text class="total-number-font">{{ totalCountPrice }}元</text>
       <view>
       <text class="total-font">本月售出金额</text>
       </view>
   </wux-grid>
   <wux-grid bordered>
-      <text class="total-number-font">0.0元</text>
+      <text class="total-number-font">{{ totalTips }}元</text>
       <view>
       <text class="total-font">本月总代购费</text>
       </view>
@@ -153,7 +155,7 @@
 />
 </view>
 <view style="margin-top: 250px;width:93%;margin-left:15px;">
-  <wux-button block size="default" type="assertive" bind:click="onClickNewGoods">退出登录</wux-button>
+  <wux-button block size="default" type="assertive" bind:click="onClickLoginOut">退出登录</wux-button>
 </view>
 <view class="bottom-view">
 <text class="bottom-text">特别鸣谢</text>

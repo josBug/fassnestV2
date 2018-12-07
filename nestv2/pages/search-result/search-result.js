@@ -197,7 +197,7 @@ Page({
     
     var search = {
       "ver": "1.0",
-      "session": "",
+      "session": wx.getStorageSync("session"),
       "userName": "",
       "object": {
         "goodsName": this.data.goodsName,
@@ -234,7 +234,7 @@ Page({
             "isPay": res.data[i].isPay,
             "remark": res.data[i].remark == '' ? '空' : res.data[i].remark,
             "userName": res.data[i].userName,
-            "source": res.data[i].source,
+            "source": res.data[i].source == '' ? '空' : res.data[i].source,
             "createAt": res.data[i].createAt,
             "updateAt": res.data[i].updateAt,
             "checked": false,
@@ -506,8 +506,9 @@ Page({
       [editStartTemp]: false
     })
     var tempRemark = this.data.list[id].remark === '空' ? '' : this.data.list[id].remark;
+    var tempSource = this.data.list[id].source === '空' ? '' : this.data.list[id].source;
     wx.navigateTo({
-      url: '../edit/edit?name=' + this.data.list[id].name + '&goodsName=' + this.data.list[id].goodsName + '&code=' + this.data.list[id].code + '&tips=' + this.data.list[id].tip + '&color=' + this.data.list[id].color + '&oldPrice=' + this.data.list[id].oldPrice + '&numbers=' + this.data.list[id].amount + '&id=' + this.data.list[id].id + '&remark=' + tempRemark + '&index=' + id,
+      url: '../edit/edit?name=' + this.data.list[id].name + '&goodsName=' + this.data.list[id].goodsName + '&code=' + this.data.list[id].code + '&tips=' + this.data.list[id].tip + '&color=' + this.data.list[id].color + '&oldPrice=' + this.data.list[id].oldPrice + '&numbers=' + this.data.list[id].amount + '&id=' + this.data.list[id].id + '&remark=' + tempRemark + '&index=' + id + '&source=' + tempSource,
     })
   },
   onExpressClickStart: function (e) {
@@ -567,7 +568,7 @@ Page({
                   index.push(id)
                   var param = {
                     "ver": "1.0",
-                    "session": "",
+                    "session": wx.getStorageSync("session"),
                     "userName": "",
                     "object": {
                       "ids": ids,
@@ -748,7 +749,7 @@ Page({
       }
       var data = {
         "ver": "1.0",
-        "session": "",
+        "session": wx.getStorageSync("session"),
         "userName": "",
         "object": {
           "ids": ids,
@@ -848,7 +849,7 @@ Page({
           }
           var param = {
             "ver": "1.0",
-            "session": "",
+            "session": wx.getStorageSync("session"),
             "userName": "",
             "object": {
               "ids": ids,
@@ -884,7 +885,7 @@ Page({
           index.push(id)
           var param = {
             "ver": "1.0",
-            "session": "",
+            "session": wx.getStorageSync("session"),
             "userName": "",
             "object": {
               "ids": ids,
@@ -924,7 +925,7 @@ Page({
         ids.push(this.data.list[id].id)
         var param = {
           "ver": "1.0",
-          "session": "",
+          "session": wx.getStorageSync("session"),
           "userName": "",
           "object": {
             "ids": ids

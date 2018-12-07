@@ -1,3 +1,5 @@
+<van-notify id="custom-selector" />
+
 <view class="container" style='padding:0px'>
   <van-toast id="van-toast" />
 <view class="userinfo" style='margin-top:50px;margin-left:30px;'>

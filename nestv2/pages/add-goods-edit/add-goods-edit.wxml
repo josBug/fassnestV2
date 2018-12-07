@@ -74,6 +74,13 @@
       clearable
       bind:change="onChangeRemark"
     />
+
+    <picker bindchange="bindPickerChange" value="{{pickIndex}}" range="{{arrayPicker}}">
+    <van-cell
+      title="来源: {{ arrayPicker[pickIndex] }}"
+      is-link
+    />
+    </picker>
     <van-switch-cell
       title="是否发货"
       checked="{{ send === 1 }}"

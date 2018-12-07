@@ -20,7 +20,8 @@
     "wux-avatar": "../../dist/wuxdist/avatar/index",
             "wux-grids": "../../dist/wuxdist/grids/index",
             "wux-grid": "../../dist/wuxdist/grid/index",
-                "wux-button": "../../dist/wuxdist/button/index"
+                "wux-button": "../../dist/wuxdist/button/index",
+                "van-toast": "../../dist/toast/index"
   },
       "navigationBarBackgroundColor": "#2B2B2B",
       "navigationBarTextStyle": "white",

@@ -72,6 +72,12 @@
       required
       bind:change="onChangeRemark"
     />
+    <picker bindchange="bindPickerChange" value="{{pickIndex}}" range="{{arrayPicker}}">
+    <van-cell
+      title="来源: {{ arrayPicker[pickIndex] }}"
+      is-link
+    />
+    </picker>
   </van-cell-group>
     <view class="btn-view">
   </view>

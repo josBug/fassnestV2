@@ -1,6 +1,5 @@
 //index.js
 import Toast from '../../dist/toast/toast';
-
 //获取应用实例
 const app = getApp()
 
@@ -41,7 +40,8 @@ Page({
       disabled: false
     })
     clearInterval(this.data.timer);
-
+    wx.setStorageSync("session", "")
+    wx.setStorageSync("userName", "")
   },
   loginSystem: function() {
     var loginParam = {
@@ -69,10 +69,12 @@ Page({
           Toast.success("登录成功!")
           wx.hideLoading();
           wx.setStorageSync("session", res.data.result)
+          wx.setStorageSync("userName", this.data.userName)
           wx.navigateTo({
             url: '../search/search'
           })
         } else {
+          wx.hideLoading();
           this.setData({
             password: '',
             loginErrorMessage: '登录失败，请检查用户名密码'
@@ -81,22 +83,6 @@ Page({
       }
     })
 
-  },
-  bindInputUser: function(e) {
-    this.setData({
-      userName:e.detail.value
-    })
-  },
-  bindInputPasswd: function(e) {
-    console.log(e.detail.value)
-    this.setData({
-      password: e.detail.value
-    })
-  },
-  bindInputCode: function(e) {
-    this.setData({
-      code: e.detail.value
-    })
   },
   changeButton: function() {
 
@@ -127,6 +113,30 @@ Page({
         console.log(res.data);
         if (res.data.code == 200) {
           Toast.success("发送成功!请查看邮箱验证码")
+          that.setData({
+            timer: setInterval(() => {//这里把setInterval赋值给变量名为timer的变量
+              //每隔一秒countDownNum就减一，实现同步
+              countDownNum--;
+              console.log(countDownNum)
+              //然后把countDownNum存进data，好让用户知道时间在倒计着
+              that.setData({
+                countDownNum: countDownNum,
+                btnText: this.data.countDownNum + '秒',
+              })
+              //在倒计时还未到0时，这中间可以做其他的事情，按项目需求来
+              if (countDownNum == 0) {
+                //这里特别要注意，计时器是始终一直在走的，如果你的时间为0，那么就要关掉定时器！不然相当耗性能
+                that.setData({
+                  countDownNum: 60,
+                  btnText: '发送验证码',
+                  disabled: false
+                })
+                //因为timer是存在data里面的，所以在关掉时，也要在data里取出后再关闭
+                clearInterval(that.data.timer);
+                //关闭定时器之后，可作其他处理codes go here
+              }
+            }, 1000)
+          })
         } else {
           this.setData({
             password: '',
@@ -134,30 +144,6 @@ Page({
           })
         }
       }
-    })
-    that.setData({
-      timer: setInterval(() => {//这里把setInterval赋值给变量名为timer的变量
-        //每隔一秒countDownNum就减一，实现同步
-        countDownNum--;
-        console.log(countDownNum)
-        //然后把countDownNum存进data，好让用户知道时间在倒计着
-        that.setData({
-          countDownNum: countDownNum,
-          btnText: this.data.countDownNum + '秒',
-        })
-        //在倒计时还未到0时，这中间可以做其他的事情，按项目需求来
-        if (countDownNum == 0) {
-          //这里特别要注意，计时器是始终一直在走的，如果你的时间为0，那么就要关掉定时器！不然相当耗性能
-          that.setData({
-            countDownNum: 60,
-            btnText: '发送验证码',
-            disabled:false
-          })
-          //因为timer是存在data里面的，所以在关掉时，也要在data里取出后再关闭
-          clearInterval(that.data.timer);
-          //关闭定时器之后，可作其他处理codes go here
-        }
-      }, 1000)
     })
   },
   onClickRegistry: function(e) {
@@ -167,17 +153,18 @@ Page({
   },
   onChangeLoginUserName: function(e) {
     this.setData({
-      userName:e.detail.value
+      userName:e.detail
     })
   },
   onChangeLoginPasswd: function (e) {
     this.setData({
-      password: e.detail.value
+      password: e.detail
     })
   },
   onChangeLoginEmailCode: function (e) {
     this.setData({
-      code: e.detail.value
+      code: e.detail
     })
   }
+
 })

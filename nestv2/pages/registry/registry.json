@@ -11,7 +11,8 @@
     "wux-button": "../../dist/wuxdist/button/index",
     "van-row": "../../dist/row/index",
     "van-col": "../../dist/col/index",
-                "van-toast": "../../dist/toast/index"
+                "van-toast": "../../dist/toast/index",
+                "van-notify": "../../dist/notify/index"
                 
   },
   "navigationBarBackgroundColor": "#2B2B2B",

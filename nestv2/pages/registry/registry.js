@@ -1,5 +1,6 @@
 // pages/registry/registry.js
 import Toast from '../../dist/toast/toast';
+import Notify from '../../dist/notify/notify';
 
 Page({
 
@@ -94,15 +95,19 @@ Page({
         if (res.data.code == 200) {
           Toast.success("注册成功!")
           wx.hideLoading();
+          this.notifyRegistrySuccess()
+
           wx.navigateBack({
             delta: 1
           })
         } else if (res.data.code == 1000){
+          wx.hideLoading();
           this.setData({
             registryPasswd: '',
             registryErrorPasswd: "密码不符合规范"
           })
         } else {
+          wx.hideLoading();
           this.setData({
             registryPasswd: '',
             registryErrorMessage: '用户已注册'
@@ -113,18 +118,28 @@ Page({
 
   },
   onChangeRegistryUserName: function(e) {
+    console.log(e.detail)
     this.setData({
-      registryUserName: e.detail.value
+      registryUserName: e.detail
     })
   },
   onChangeRegistryPasswd: function(e) {
     this.setData({
-      registryPasswd: e.detail.value
+      registryPasswd: e.detail
     })
   },
   onChangeRegistryEmail: function(e) {
     this.setData({
-      registryEmail: e.detail.value
+      registryEmail: e.detail
     })
+  },
+  notifyRegistrySuccess: () => {
+    console.log("====================")
+    Notify({
+      duration: 2000,
+      text: '注册成功',
+      selector: '#custom-selector',
+      backgroundColor: '#38f'
+    });
   }
 })

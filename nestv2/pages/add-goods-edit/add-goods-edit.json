@@ -21,7 +21,8 @@
     "wssblock": "../../dist/wssblock/index",
     "van-row": "../../dist/row/index",
     "van-col": "../../dist/col/index",
-    "van-switch-cell": "../../dist/switch-cell/index"
+    "van-switch-cell": "../../dist/switch-cell/index",
+    "van-cell": "../../dist/cell/index"
   },
   "navigationBarBackgroundColor": "#2B2B2B",
   "navigationBarTitleText": "编辑商品",

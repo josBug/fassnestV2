@@ -100,7 +100,7 @@ Page({
     var idstring = spliceId.split(":")[1];
     var index = parseInt(idstring);
     wx.navigateTo({
-      url: '../add-goods-edit/add-goods-edit?index=' + index + '&name=' + this.data.addList[index].name + '&goodsName=' + this.data.addList[index].goodsName + '&code=' + this.data.addList[index].code + '&tips=' + this.data.addList[index].tips + '&color=' + this.data.addList[index].color + '&oldPrice=' + this.data.addList[index].oldPrice + '&amount=' + this.data.addList[index].amount + '&remark=' + this.data.addList[index].remark + '&send=' + this.data.addList[index].send + '&isPay=' + this.data.addList[index].isPay,
+      url: '../add-goods-edit/add-goods-edit?index=' + index + '&name=' + this.data.addList[index].name + '&goodsName=' + this.data.addList[index].goodsName + '&code=' + this.data.addList[index].code + '&tips=' + this.data.addList[index].tips + '&color=' + this.data.addList[index].color + '&oldPrice=' + this.data.addList[index].oldPrice + '&amount=' + this.data.addList[index].amount + '&remark=' + this.data.addList[index].remark + '&send=' + this.data.addList[index].send + '&isPay=' + this.data.addList[index].isPay + '&source=' + this.data.addList[index].source + '&pickIndex=' + this.data.addList[index].pickIndex,
     })
   },
   onClickDelete: function(e) {
@@ -165,21 +165,22 @@ Page({
         for(var i = 0; i < tempList.length; ++ i) {
           var data = {
             goods: tempList[i].goodsName,
-            code: tempList[i].code,
-            color: tempList[i].color,
+            code: tempList[i].code == null ? "" : tempList[i].code,
+            color: tempList[i].color == null ? "" : tempList[i].color,
             amount: tempList[i].amount,
             price: tempList[i].oldPrice,
             names: tempList[i].name,
             tip: tempList[i].tips,
-            remark: tempList[i].remark,
+            remark: tempList[i].remark == null ? "" : tempList[i].remark,
             send: tempList[i].send,
-            isPay: tempList[i].isPay
+            isPay: tempList[i].isPay,
+            source: tempList[i].source
           }
           resList.push(data)
         }
         var param = {
           "ver": "1.0",
-          "session": "",
+          "session": wx.getStorageSync("session"),
           "userName": "",
           "object": {
             "messages": resList

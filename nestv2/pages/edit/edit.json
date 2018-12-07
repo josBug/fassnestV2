@@ -20,7 +20,8 @@
       "wux-dialog": "../../dist/wuxdist/dialog/index",
       "wssblock":"../../dist/wssblock/index",
         "van-row": "../../dist/row/index",
-        "van-col": "../../dist/col/index"
+        "van-col": "../../dist/col/index",
+        "van-cell": "../../dist/cell/index"
     },
     "navigationBarBackgroundColor": "#2B2B2B",
     "navigationBarTitleText": "编辑商品",

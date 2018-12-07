@@ -1,6 +1,6 @@
 // pages/search/search.js
 import Dialog from '../../dist/dialog/dialog';
-
+import Toast from '../../dist/toast/toast';
 
 var util = require('./utils.js');
 Page({
@@ -46,7 +46,9 @@ Page({
     totalAmount:0,
     totalTips: 0,
     totalOldPrice: 0,
-    totalCountPrice: 0
+    totalCountPrice: 0,
+    userTitle:'',
+    userName:''
   },
   onClick(e) {
     console.log('onClick', e.detail)
@@ -73,8 +75,11 @@ Page({
       startDate: minusDate,
       endDate: date,
       searchStorage: wx.getStorageSync('searchData'),
-      searchStorageName: wx.getStorageSync('searchStorageName')
+      searchStorageName: wx.getStorageSync('searchStorageName'),
+      userTitle: wx.getStorageSync("userName").charAt(0).toUpperCase(),
+      userName: wx.getStorageSync("userName")
     });
+
     var registryParam = {
       "ver": "1.0",
       "session":wx.getStorageSync("session")
@@ -325,5 +330,41 @@ Page({
     }).catch(() => {
     });
 
+  },
+  onClickLoginOut: function(e) {
+    var loginOutParam = {
+      "ver": "1.0",
+      "object": {
+        "userName": wx.getStorageSync("userName"),
+        "ksid": wx.getStorageSync("session")
+      }
+    }
+    wx.showLoading({
+      title: '请稍后...',
+      mask: true
+    })
+    wx.request({
+      url: 'https://www.lywss.top/loginout',
+      data: JSON.stringify(loginOutParam),
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      method: "POST",
+      success: res => {
+        console.log(res.data);
+        if (res.data.code == 200) {
+          Toast.success("退出登录成功!")
+          wx.setStorageSync("session", "")
+          wx.setStorageSync("userName", "")
+          wx.hideLoading();
+          wx.navigateBack({
+            delta: 1
+          })
+        } else {
+          Toast.fail("退出失败!")
+
+        }
+      }
+    })
   }
 })

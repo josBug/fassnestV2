@@ -19,12 +19,15 @@ Page({
     remark: '',
     send:0,
     isPay:0,
+    source:'',
     btnText:'添加',
     inputNameTag:false,
     inputGoodsNameTag: false,
     inputTipsTag: false,
     inputOldPriceTag: false,
-    inputAmountTag: false
+    inputAmountTag: false,
+    pickIndex:0,
+    arrayPicker:['爱库存','其他']
   },
 
   /**
@@ -42,6 +45,8 @@ Page({
         oldPrice: parseFloat(options.oldPrice),
         amount: parseInt(options.amount),
         remark: options.remark,
+        pickIndex: parseInt(options.pickIndex),
+        source: options.source,
         send: parseInt(options.send),
         isPay: parseInt(options.isPay),
         btnText:'更新'      
@@ -91,7 +96,12 @@ Page({
   onReachBottom: function () {
 
   },
-
+  bindPickerChange: function(e) {
+    this.setData({
+      pickIndex:e.detail.value,
+      source: this.data.arrayPicker[e.detail.value]
+    })
+  },
   /**
    * 用户点击右上角分享
    */
@@ -208,7 +218,9 @@ Page({
         send: this.data.send,
         isPay: this.data.isPay,
         color: this.data.color,
-        remark: this.data.remark
+        remark: this.data.remark,
+        source: this.data.source,
+        pickIndex:this.data.pickIndex
       }
       var tempList = prevPage.data.addList;
       tempList.push(data)

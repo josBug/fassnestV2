@@ -16,13 +16,24 @@ Page({
     oldPrice: '',
     numbers: '',
     id:-1,
-    remark:''
+    remark:'',
+    source: '',
+    pickIndex: 0,
+    arrayPicker: ['爱库存', '其他']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options.source)
+    for (var i = 0; i < this.data.arrayPicker.length; ++ i) {
+      if (options.source === this.data.arrayPicker[i]) {
+        this.setData({
+          pickIndex:i
+        })
+      }
+    }
     this.setData({
       id:parseInt(options.id),
       index: parseInt(options.index),
@@ -33,7 +44,8 @@ Page({
       color: options.color,
       oldPrice: parseFloat(options.oldPrice),
       numbers: parseInt(options.numbers),
-      remark: options.remark === '空' ? '' : options.remark
+      remark: options.remark === '空' ? '' : options.remark,
+      source:options.source
     })
   },
 
@@ -89,7 +101,7 @@ Page({
 
     var param = {
       "ver": "1.0",
-      "session": "",
+      "session": wx.getStorageSync("session"),
       "userName": "",
       "object": {
         goodsRecords:[{
@@ -101,7 +113,8 @@ Page({
           color:this.data.color,
           oldPrice:this.data.oldPrice,
           amount:this.data.numbers,
-          remark:this.data.remark
+          remark:this.data.remark,
+          source:this.data.source
         }]
       }
     }
@@ -155,6 +168,12 @@ Page({
       remark: e.detail
     })
   },
+  bindPickerChange:function(e) {
+    this.setData({
+      pickIndex: e.detail.value,
+      source:this.data.arrayPicker[e.detail.value]
+    })
+  },
   updateEdit: function(index, param) {
     wx.showLoading({
       title: '更新中...',
@@ -182,6 +201,7 @@ Page({
           var oldPriceTemp = 'list[' + index + '].oldPrice'
           var amountTemp = 'list[' + index + '].amount'
           var remarkTemp = 'list[' + index + '].remark'
+          var sourceTemp = 'list[' + index + '].source'
           
           prevPage.setData({
             [nameTemp]: this.data.name,
@@ -191,11 +211,12 @@ Page({
             [colorTemp]: this.data.color,
             [oldPriceTemp]: this.data.oldPrice,
             [amountTemp]: this.data.numbers,
-            [remarkTemp]: this.data.remark == '' ? '空' : this.data.remark
+            [remarkTemp]: this.data.remark == '' ? '空' : this.data.remark,
+            [sourceTemp]: this.data.source == '' ? '空' : this.data.source
           })
           var param = {
             "ver": "1.0",
-            "session": "",
+            "session": wx.getStorageSync("session"),
             "userName": "",
             "object": {
               "goodsName": prevPage.data.goodsName,
