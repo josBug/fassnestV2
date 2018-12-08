@@ -225,7 +225,7 @@ Page({
               "isPay": prevPage.data.isPay === true ? 1 : 0,
               "isSend": prevPage.data.isSend === true ? 1 : 0,
               "startTime": prevPage.data.startTime + " " + "00:00:00",
-              "endTime": prevPage.data.endTime + " " + "00:00:00",
+              "endTime": prevPage.data.endTime + " " + "23:59:59",
               "sort": prevPage.data.sort
             }
           }
