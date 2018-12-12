@@ -357,6 +357,20 @@ Page({
           wx.setStorageSync("session", "")
           wx.setStorageSync("userName", "")
           wx.hideLoading();
+          let page = getCurrentPages();
+          let prevPage = page[page.length - 2];
+          prevPage.setData({
+            loginErrorMessage: "",
+            userName:"",
+            password:"",
+            code: ''
+          })
+          prevPage.setData({
+            countDownNum: 60,
+            btnText: '发送验证码',
+            disabled: false
+          })
+          clearInterval(prevPage.data.timer);
           wx.navigateBack({
             delta: 1
           })

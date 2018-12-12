@@ -5,7 +5,7 @@
 </view>
 <van-cell-group>
   <van-field
-    value="{{ username }}"
+    value="{{ userName }}"
     required
     clearable
     label="用户名"

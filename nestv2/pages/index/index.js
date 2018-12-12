@@ -28,18 +28,6 @@ Page({
     })
   },
   onShow: function () {
-    this.setData({
-      loginErrorMessage: "",
-      userName: "",
-      password: "",
-      code: ''
-    })
-    this.setData({
-      countDownNum: 60,
-      btnText: '发送验证码',
-      disabled: false
-    })
-    clearInterval(this.data.timer);
     wx.setStorageSync("session", "")
     wx.setStorageSync("userName", "")
   },
@@ -140,8 +128,10 @@ Page({
         } else {
           this.setData({
             password: '',
-            loginErrorMessage: '发送失败，请检查用户名密码'
+            loginErrorMessage: '发送失败，请检查用户名密码',
+            disabled: false
           })
+
         }
       }
     })
