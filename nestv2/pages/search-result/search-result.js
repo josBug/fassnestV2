@@ -121,6 +121,11 @@ Page({
         label: '关联快递',
         icon: "../../scancode1.png"
 
+      },
+      {
+        label: '隐藏代购费',
+        icon: "../../hide.png"
+
       }
     ],
     goodsName:'',
@@ -136,7 +141,8 @@ Page({
     oldPrices:0.0,
     tips:0.0,
     amounts:0,
-    clickSelected:false
+    clickSelected:false,
+    isShowTips: true
   },
 
   /**
@@ -760,6 +766,27 @@ Page({
       this.updateOperator(data, pickList, e.detail.index);
     } else if (e.detail.index == 6) {
       this.onclickScanCode()
+    } else if (e.detail.index == 7) {
+      this.setData({
+        isShowTips: !this.data.isShowTips
+      })
+
+      if (this.data.isShowTips) {
+        var buttonTempLabel = "buttons[" + 7 + "].label"
+        var buttonTempIcon = "buttons[" + 7 + "].icon"
+        this.setData({
+          [buttonTempLabel]: "隐藏代购费",
+          [buttonTempIcon]: "../../hide.png"
+        })
+      } else {
+        var buttonTempLabel = "buttons[" + 7 + "].label"
+        var buttonTempIcon = "buttons[" + 7 + "].icon"
+        this.setData({
+          [buttonTempLabel]: "显示代购费",
+          [buttonTempIcon]: "../../show.png"
+        })
+      }
+
     }
   },
   updateOperator: function (param, pickList, index) {

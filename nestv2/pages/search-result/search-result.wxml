@@ -17,10 +17,10 @@
   <text style="margin-left: 55px;">总计原价:{{ oldPrices }}元</text>
   </view >
   <view style="background-color: #c9c3c3e1;height:1px;width:170px;margin-left: 15px;"></view>
-  <view style="margin-top: 10px;">
+  <view wx:if="{{ isShowTips }}" style="margin-top: 10px;">
   <text style="margin-left: 55px;">总计代购费:{{ tips }}元</text>  
   </view>
-  <view style="background-color: #c9c3c3e1;height:1px;width:170px;margin-left: 15px;"></view>
+  <view wx:if="{{ isShowTips }}" style="background-color: #c9c3c3e1;height:1px;width:170px;margin-left: 15px;"></view>
   <view style="margin-top: 10px;">
   <text style="margin-left: 55px;">总计数量:{{ amounts }}件</text>  
   </view>
@@ -61,7 +61,7 @@
       <van-tag wx:if="{{ item.isPay === 1 }}" plain type="primary">已付款</van-tag>
       <van-tag wx:if="{{ item.isPay === 0 }}" plain type="danger">未付款</van-tag>      
       <van-tag plain type="warning">{{ item.source }}</van-tag>
-      <van-tag plain type="warning">代购费:{{ item.tip }}</van-tag>
+      <van-tag wx:if="{{ isShowTips }}" plain type="warning">代购费:{{ item.tip }}</van-tag>
       <van-tag plain type="warning">颜色:{{ item.color }}</van-tag>
     </view>
     <view slot="footer">
