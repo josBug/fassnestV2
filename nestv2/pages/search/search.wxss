@@ -184,5 +184,5 @@ text-align: center;
 .bottom-view {
   margin-top: 10px;
   width: 100%; 
-  margin-left: 170px;
+  margin-left: 50px;
 }

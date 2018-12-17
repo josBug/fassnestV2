@@ -1,0 +1,29 @@
+{
+  "usingComponents": {
+    "van-button": "../../dist/button/index",
+    "van-card": "../../dist/card/index",
+    "van-tabbar": "../../dist/tabbar/index",
+    "van-tabbar-item": "../../dist/tabbar-item/index",
+    "van-search": "../../dist/search/index",
+    "van-icon": "../../dist/icon/index",
+    "van-action-sheet": "../../dist/action-sheet/index",
+    "van-field": "../../dist/field/index",
+    "van-row": "../../dist/row/index",
+    "van-col": "../../dist/col/index",
+    "van-checkbox": "../../dist/checkbox/index",
+    "van-checkbox-group": "../../dist/checkbox-group/index",
+    "van-cell": "../../dist/cell/index",
+    "van-dialog": "../../dist/dialog/index",
+    "wux-floating-button": "../../dist/wuxdist/floating-button/index",
+    "i-avatar": "../../dist/dist/avatar/index",
+    "wux-image": "../../dist/wuxdist/image/index",
+    "wux-avatar": "../../dist/wuxdist/avatar/index",
+    "wux-grids": "../../dist/wuxdist/grids/index",
+    "wux-grid": "../../dist/wuxdist/grid/index",
+    "wux-button": "../../dist/wuxdist/button/index",
+    "van-toast": "../../dist/toast/index"
+  },
+  "navigationBarBackgroundColor": "#2B2B2B",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "用户信息"
+}

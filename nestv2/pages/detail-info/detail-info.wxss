@@ -1,0 +1,11 @@
+.list-cell{
+  margin-top: 0px;width:100%;
+  border-bottom: 1rpx solid #26262617;
+  border-top: 1rpx solid #26262617;
+}
+
+.container-v2 {
+  height: 100%;
+  width:100%;
+  overflow-x:hidden;
+}

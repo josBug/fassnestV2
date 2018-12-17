@@ -380,5 +380,10 @@ Page({
         }
       }
     })
+  },
+  onClickDetailInfo: function(e) {
+    wx.navigateTo({
+      url: '../detail-info/detail-info',
+    })
   }
 })

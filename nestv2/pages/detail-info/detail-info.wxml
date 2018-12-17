@@ -1,0 +1,20 @@
+<view class="container-v2" style="height:550px">
+<view class="list-cell">
+  <van-cell
+    title="邮箱"
+    value="{{ mail }}"
+    border="true"
+  >
+  </van-cell>
+  <van-cell
+    title="修改密码"
+    border="true"
+    is-link
+    bind:click="onClickModifyPasswd"
+  >
+  </van-cell>
+</view>
+<view style="margin-top: 50px;width:93%;margin-left:15px;">
+  <wux-button block size="default" type="positive" bind:click="onClickLoginOut">确认修改</wux-button>
+</view>
+</view>

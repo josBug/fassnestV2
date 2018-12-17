@@ -1,0 +1,37 @@
+<view class="container-v2" style="height:550px">
+<view class="list-cell">
+  <van-field
+    value="{{ newPasswd }}"
+    required
+    clearable
+    label="新密码"
+    placeholder="请输入新密码"
+    bind:click-icon="onClickIcon"
+  />
+  <view>
+  <text class="pwsswd-area">1.密码必须至少8位字符</text>
+  </view>
+    <view>
+  <text class="pwsswd-area">2.密码仅能包含字母和数字</text>
+  </view>
+    <view>
+  <text class="pwsswd-area">3.密码必须包含至少两个数字</text>
+  </view>
+  <van-field
+    value="{{ newPasswdRepeat }}"
+    required
+    clearable
+    label="确认新密码"
+    placeholder="请重新输入新密码"
+    bind:click-icon="onClickIcon"
+  />
+  <van-field
+    value="{{ emailCode }}"
+    required
+    clearable
+    label="邮箱验证码"
+    placeholder="请输入邮箱验证码"
+    bind:click-icon="onClickIcon"
+  />
+</view>
+</view>

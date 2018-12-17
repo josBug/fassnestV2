@@ -121,6 +121,7 @@
   <van-cell
   value="详细信息"
   is-link
+  bind:click="onClickDetailInfo"
 >
   <view slot="title">
     <wux-avatar size="large">{{ userTitle }}</wux-avatar>
@@ -158,7 +159,7 @@
   <wux-button block size="default" type="assertive" bind:click="onClickLoginOut">退出登录</wux-button>
 </view>
 <view class="bottom-view">
-<text class="bottom-text">特别鸣谢</text>
+<text class="bottom-text">特别鸣谢  网站备案:沪ICP备18041491号-1 创建时间:2018-11-07 </text>
 </view>
 </view>
 <van-tabbar active="{{ active }}" bind:change="onChange">
