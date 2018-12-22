@@ -6,7 +6,7 @@
     clearable
     label="新密码"
     placeholder="请输入新密码"
-    bind:click-icon="onClickIcon"
+    bind:change="onChangeNewPasswd"
   />
   <view>
   <text class="pwsswd-area">1.密码必须至少8位字符</text>
@@ -23,7 +23,7 @@
     clearable
     label="确认新密码"
     placeholder="请重新输入新密码"
-    bind:click-icon="onClickIcon"
+    bind:change="onChangeNewPasswdRepeat"
   />
   <van-field
     value="{{ emailCode }}"
@@ -31,7 +31,10 @@
     clearable
     label="邮箱验证码"
     placeholder="请输入邮箱验证码"
-    bind:click-icon="onClickIcon"
-  />
+    bind:change="onChangeEmailCode"
+  >
+  <van-button slot="button" size="small" type="primary" bind:click="changeButton" disabled="{{ disabled }}">{{ btnText }}</van-button>
+  </van-field>
+  <van-button size="large" type="primary" bindtap="confirmModify">确认修改</van-button>
 </view>
 </view>
