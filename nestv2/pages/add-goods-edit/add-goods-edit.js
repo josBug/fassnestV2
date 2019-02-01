@@ -15,7 +15,8 @@ Page({
     tips: '',
     color: '',
     oldPrice: '',
-    amount: '',
+    sellPrice: '',
+    amount: 1,
     remark: '',
     send:0,
     isPay:0,
@@ -24,10 +25,11 @@ Page({
     inputNameTag:false,
     inputGoodsNameTag: false,
     inputTipsTag: false,
+    inputSellTag: false,
     inputOldPriceTag: false,
     inputAmountTag: false,
     pickIndex:0,
-    arrayPicker:['爱库存','其他']
+    arrayPicker:['爱xx','宝xx','舟xx']
   },
 
   /**
@@ -43,6 +45,7 @@ Page({
         tips: parseFloat(options.tips),
         color: options.color,
         oldPrice: parseFloat(options.oldPrice),
+        sellPrice: parseFloat(options.sellPrice),
         amount: parseInt(options.amount),
         remark: options.remark,
         pickIndex: parseInt(options.pickIndex),
@@ -122,10 +125,10 @@ Page({
         inputGoodsNameTag: true
       })
     }
-    if (this.data.tips === '' || this.data.tips <= 0) {
+    if (this.data.sellPrice === '' || this.data.sellPrice <= 0) {
       isEmpty = true
       this.setData({
-        inputTipsTag: true
+        inputSellTag: true
       })
     }
     if (this.data.oldPrice === '' || this.data.oldPrice <= 0) {
@@ -172,6 +175,14 @@ Page({
     })
     console.log(this.data.tips)
   },
+  onChangeSell: function (e) {
+    console.log(e.detail)
+    this.setData({
+      sellPrice: parseFloat(e.detail === '' ? 0 : e.detail),
+      inputSellTag: true
+    })
+    console.log(this.data.sellPrice)
+  },
   onChangeColor: function (e) {
     this.setData({
       color: e.detail
@@ -200,12 +211,17 @@ Page({
     })
   },
   updateEdit: function (index) {
+    if (this.data.oldPrice > this.data.sellPrice) {
+      Toast.fail('卖出价请大于原价')
+      return
+    }
     wx.showLoading({
       title: '更新中...',
       mask: true
     })
     let page = getCurrentPages();
     let prevPage = page[page.length - 2];
+
     if (index === -1) {
       var data = {
         name: this.data.name,
@@ -214,7 +230,8 @@ Page({
         amount: this.data.amount,
         code: this.data.code,
         oldPrice: this.data.oldPrice,
-        tips: this.data.tips,
+        sellPrice: this.data.sellPrice,
+        tips: this.data.sellPrice - this.data.oldPrice,
         send: this.data.send,
         isPay: this.data.isPay,
         color: this.data.color,
@@ -235,22 +252,28 @@ Page({
       var tipTemp = 'addList[' + index + '].tips'
       var colorTemp = 'addList[' + index + '].color'
       var oldPriceTemp = 'addList[' + index + '].oldPrice'
+      var sellPriceTemp = 'addList[' + index + '].sellPrice'
       var amountTemp = 'addList[' + index + '].amount'
       var remarkTemp = 'addList[' + index + '].remark'
       var sendTemp = 'addList[' + index + '].send'
       var isPayTemp = 'addList[' + index + '].isPay'
+      var sourceTemp = 'addList[' + index + '].source'
+      var pickIndexTemp = 'addList[' + index + '].pickIndex'
 
       prevPage.setData({
         [nameTemp]: this.data.name,
         [goodsNameTemp]: this.data.goodsName,
         [codeTemp]: this.data.code,
         [tipTemp]: this.data.tips,
+        [sellPriceTemp]: this.data.sellPrice,
         [colorTemp]: this.data.color,
         [oldPriceTemp]: this.data.oldPrice,
         [amountTemp]: this.data.amount,
         [remarkTemp]: this.data.remark,
         [sendTemp]: this.data.send,
-        [isPayTemp]:this.data.isPay
+        [isPayTemp]:this.data.isPay,
+        [sourceTemp]: this.data.source,
+        [pickIndexTemp]: this.data.pickIndex
       })
     }
     

@@ -123,8 +123,8 @@ Page({
 
       },
       {
-        label: '隐藏代购费',
-        icon: "../../hide.png"
+        label: '显示代购费',
+        icon: "../../show.png"
 
       }
     ],
@@ -142,7 +142,7 @@ Page({
     tips:0.0,
     amounts:0,
     clickSelected:false,
-    isShowTips: true
+    isShowTips: false
   },
 
   /**
@@ -233,6 +233,7 @@ Page({
             "color": res.data[i].color,
             "amount": res.data[i].amount,
             "oldPrice": res.data[i].oldPrice,
+            "sellPrice": res.data[i].sellPrice,
             "name": res.data[i].name,
             "tip": res.data[i].tip,
             "send": res.data[i].send,
@@ -514,7 +515,7 @@ Page({
     var tempRemark = this.data.list[id].remark === '空' ? '' : this.data.list[id].remark;
     var tempSource = this.data.list[id].source === '空' ? '' : this.data.list[id].source;
     wx.navigateTo({
-      url: '../edit/edit?name=' + this.data.list[id].name + '&goodsName=' + this.data.list[id].goodsName + '&code=' + this.data.list[id].code + '&tips=' + this.data.list[id].tip + '&color=' + this.data.list[id].color + '&oldPrice=' + this.data.list[id].oldPrice + '&numbers=' + this.data.list[id].amount + '&id=' + this.data.list[id].id + '&remark=' + tempRemark + '&index=' + id + '&source=' + tempSource,
+      url: '../edit/edit?name=' + this.data.list[id].name + '&goodsName=' + this.data.list[id].goodsName + '&code=' + this.data.list[id].code + '&tips=' + this.data.list[id].tip + '&color=' + this.data.list[id].color + '&oldPrice=' + this.data.list[id].oldPrice + '&numbers=' + this.data.list[id].amount + '&id=' + this.data.list[id].id + '&remark=' + tempRemark + '&index=' + id + '&source=' + tempSource + '&sellPrice=' + this.data.list[id].sellPrice,
     })
   },
   onExpressClickStart: function (e) {

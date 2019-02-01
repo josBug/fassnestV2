@@ -18,7 +18,7 @@
     title="{{ item.goodsName }}"
     value="x{{ item.amount }}"
     size="large"
-    label="货号:{{ item.code }} 原价:{{ item.oldPrice }} 颜色:{{ item.color }} 来源:{{ item.source }}"
+    label="货号:{{ item.code }} 卖出价:{{ item.sellPrice }} 颜色:{{ item.color }} 来源:{{ item.source }}"
     is-link
     border
     icon="shop"

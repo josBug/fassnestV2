@@ -15,11 +15,12 @@ Page({
     color: '',
     oldPrice: '',
     numbers: '',
+    sellPrice:'',
     id:-1,
     remark:'',
     source: '',
     pickIndex: 0,
-    arrayPicker: ['爱库存', '其他']
+    arrayPicker: ['爱xx', '宝xx', '舟xx']
   },
 
   /**
@@ -42,6 +43,7 @@ Page({
       code: options.code,
       tips: parseFloat(options.tips),
       color: options.color,
+      sellPrice: parseFloat(options.sellPrice),
       oldPrice: parseFloat(options.oldPrice),
       numbers: parseInt(options.numbers),
       remark: options.remark === '空' ? '' : options.remark,
@@ -114,7 +116,8 @@ Page({
           oldPrice:this.data.oldPrice,
           amount:this.data.numbers,
           remark:this.data.remark,
-          source:this.data.source
+          source:this.data.source,
+          sellPrice: this.data.sellPrice
         }]
       }
     }
@@ -142,7 +145,12 @@ Page({
     this.setData({
       tips: parseFloat(e.detail)
     })
-  }, 
+  },
+  onChangeSell: function (e) {
+    this.setData({
+      sellPrice: parseFloat(e.detail)
+    })
+  },
   onChangeColor: function (e) {
     this.setData({
       color: e.detail
@@ -202,6 +210,8 @@ Page({
           var amountTemp = 'list[' + index + '].amount'
           var remarkTemp = 'list[' + index + '].remark'
           var sourceTemp = 'list[' + index + '].source'
+          var sellTemp = 'list[' + index + '].sellPrice'
+
           
           prevPage.setData({
             [nameTemp]: this.data.name,
@@ -211,6 +221,7 @@ Page({
             [colorTemp]: this.data.color,
             [oldPriceTemp]: this.data.oldPrice,
             [amountTemp]: this.data.numbers,
+            [sellTemp]: this.data.sellPrice,
             [remarkTemp]: this.data.remark == '' ? '空' : this.data.remark,
             [sourceTemp]: this.data.source == '' ? '空' : this.data.source
           })

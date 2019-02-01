@@ -31,14 +31,14 @@
       bind:change="onChangeCode"
     />
     <van-field
-      value="{{ tips }}"
-      label="代购费"
-      placeholder="请输入代购费"
+      value="{{ sellPrice }}"
+      label="卖出价"
+      placeholder="请输入卖出价格"
       clearable
       required
       type="digit"
-      error-message="{{ inputTipsTag && (tips === '' || tips === 0) ? '代购费不能为空' : ''  }}"
-      bind:change="onChangeTips"
+      error-message="{{ inputSellTag && (sellPrice === '' || sellPrice === 0) ? '卖出价费不能为空' : ''  }}"
+      bind:change="onChangeSell"
     />
     <van-field
       value="{{ color }}"

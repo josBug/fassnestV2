@@ -13,9 +13,9 @@
   <text style="margin-left: 50px;font-size:23px;color:#EEB4B4;">代购统计</text>  
   </view>
   
-  <view style="margin-top: 20px;">
+  <!-- <view style="margin-top: 20px;">
   <text style="margin-left: 55px;">总计原价:{{ oldPrices }}元</text>
-  </view >
+  </view > -->
   <view style="background-color: #c9c3c3e1;height:1px;width:170px;margin-left: 15px;"></view>
   <view wx:if="{{ isShowTips }}" style="margin-top: 10px;">
   <text style="margin-left: 55px;">总计代购费:{{ tips }}元</text>  
@@ -41,7 +41,7 @@
   <van-card
   id="card:{{ index }}"
   num="{{ item.amount }}"
-  price="{{ item.oldPrice }}"
+  price="{{ item.sellPrice }}"
   title="{{ item.goodsName }}"
   thumb-mode="widthFix"
   thumb="../../jinggao.png"

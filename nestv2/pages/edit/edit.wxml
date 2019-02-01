@@ -26,24 +26,22 @@
       label="货号"
       placeholder="请输入货号"
       clearable
-      required
       bind:change="onChangeCode"
     />
     <van-field
-      value="{{ tips }}"
-      label="代购费"
-      placeholder="请输入代购费"
+      value="{{ sellPrice }}"
+      label="卖出价"
+      placeholder="请输入卖出价格"
       clearable
       required
       type="digit"
-      bind:change="onChangeTips"
+      bind:change="onChangeSell"
     />
     <van-field
       value="{{ color }}"
       label="颜色"
       placeholder="请输入颜色"
       clearable
-      required
       bind:change="onChangeColor"
     />
     <van-field
@@ -69,7 +67,6 @@
       label="备注"
       placeholder="请输入备注"
       clearable
-      required
       bind:change="onChangeRemark"
     />
     <picker bindchange="bindPickerChange" value="{{pickIndex}}" range="{{arrayPicker}}">
