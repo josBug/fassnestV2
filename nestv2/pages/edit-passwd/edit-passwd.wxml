@@ -1,12 +1,15 @@
 <view class="container-v2" style="height:550px">
+  <van-toast id="van-toast" />
+
 <view class="list-cell">
   <van-field
-    value="{{ newPasswd }}"
+    value="{{ oldPasswd }}"
     required
     clearable
-    label="新密码"
-    placeholder="请输入新密码"
-    bind:change="onChangeNewPasswd"
+    label="旧密码"
+    type="password"
+    placeholder="请输入旧密码"
+    bind:change="onChangeOldPasswd"
   />
   <view>
   <text class="pwsswd-area">1.密码必须至少8位字符</text>
@@ -18,23 +21,25 @@
   <text class="pwsswd-area">3.密码必须包含至少两个数字</text>
   </view>
   <van-field
-    value="{{ newPasswdRepeat }}"
+    value="{{ newPasswd }}"
     required
     clearable
-    label="确认新密码"
-    placeholder="请重新输入新密码"
-    bind:change="onChangeNewPasswdRepeat"
+    label="新密码"
+    type="password"
+    placeholder="请输入新密码"
+    bind:change="onChangeNewPasswd"
   />
   <van-field
-    value="{{ emailCode }}"
+    value="{{ repeatePassWd }}"
     required
     clearable
-    label="邮箱验证码"
-    placeholder="请输入邮箱验证码"
-    bind:change="onChangeEmailCode"
-  >
-  <van-button slot="button" size="small" type="primary" bind:click="changeButton" disabled="{{ disabled }}">{{ btnText }}</van-button>
-  </van-field>
-  <van-button size="large" type="primary" bindtap="confirmModify">确认修改</van-button>
+    label="新密码"
+    type="password"
+    placeholder="请重新输入新密码"
+    bind:change="onChangeRepeateNewPasswd"
+  />
+<view style="margin-top: 50px;width:93%;margin-left:15px;">
+  <wux-button block size="default" type="positive" bind:click="onConfirm">确认修改</wux-button>
+</view>
 </view>
 </view>

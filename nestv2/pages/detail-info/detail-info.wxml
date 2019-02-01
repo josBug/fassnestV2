@@ -14,7 +14,5 @@
   >
   </van-cell>
 </view>
-<view style="margin-top: 50px;width:93%;margin-left:15px;">
-  <wux-button block size="default" type="positive" bind:click="onClickLoginOut">确认修改</wux-button>
-</view>
+
 </view>

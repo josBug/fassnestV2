@@ -54,6 +54,12 @@ Page({
       success: res => {
         console.log(res.data);
         if (res.data.code == 200) {
+          this.setData({
+            countDownNum: 60,
+            btnText: '发送验证码',
+            disabled: false
+          })
+          clearInterval(this.data.timer);
           Toast.success("登录成功!")
           wx.hideLoading();
           wx.setStorageSync("session", res.data.result)
@@ -137,6 +143,12 @@ Page({
     })
   },
   onClickRegistry: function(e) {
+    this.setData({
+      countDownNum: 60,
+      btnText: '发送验证码',
+      disabled: false
+    })
+    clearInterval(this.data.timer);
     wx.navigateTo({
       url: '../registry/registry',
     })

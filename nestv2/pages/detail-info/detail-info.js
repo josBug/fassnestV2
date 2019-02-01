@@ -1,4 +1,5 @@
 // pages/detail-info/detail-info.js
+
 Page({
 
   /**
@@ -12,7 +13,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var getMail = {
+      "ver": "1.0",
+      "session": wx.getStorageSync("session")
+    }
+    wx.request({
+      url: 'https://www.lywss.top/get/email',
+      data: JSON.stringify(getMail),
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      method: "POST",
+      success: res => {
+        if (res.data.code == 200) {
+          this.setData({
+            mail: res.data.result
+          })
+        }
+      }
+    })
   },
 
   /**
