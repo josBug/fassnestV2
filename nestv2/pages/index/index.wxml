@@ -1,8 +1,10 @@
+<!-- <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button> -->
 <view class="container" style='padding:0px'>
   <van-toast id="van-toast" />
 <view class="userinfo" style='margin-top:50px;margin-left:30px;'>
   <image class="userinfo-avatar" src="../../logo2.png" mode="Widthfix"></image>
 </view>
+
 <van-cell-group>
   <van-field
     value="{{ userName }}"

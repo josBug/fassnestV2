@@ -93,12 +93,26 @@ Page({
       method: "POST",
       success: res => {
         console.log(res.data);
+        if (res.statusCode != 200) {
+          wx.setStorageSync("session", "")
+          wx.navigateBack({
+            delta: 1
+          })
+          return
+        }
         this.setData({
           totalAmount: res.data.amount,
           totalTips: res.data.tips,
           totalOldPrice: res.data.oldPrice,
           totalCountPrice: res.data.countPrice
         })
+      },
+      fail: res => {
+        wx.setStorageSync("session", "")
+        wx.navigateBack({
+          delta: 1
+        })
+        return
       }
     })
   },

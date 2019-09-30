@@ -49,7 +49,6 @@
       label="原价"
       placeholder="请输入价格"
       clearable
-      required
       type="digit"      
       bind:change="onChangeOldPrice"
     />

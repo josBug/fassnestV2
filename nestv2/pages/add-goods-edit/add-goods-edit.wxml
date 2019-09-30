@@ -52,9 +52,7 @@
       label="原价"
       placeholder="请输入价格"
       clearable
-      required
       type="digit"
-      error-message="{{ inputOldPriceTag && (oldPrice === '' || oldPrice === 0) ? '原价不能为空' : ''  }}"
       bind:change="onChangeOldPrice"
     />
     <van-field

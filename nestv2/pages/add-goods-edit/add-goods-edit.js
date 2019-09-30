@@ -131,12 +131,13 @@ Page({
         inputSellTag: true
       })
     }
-    if (this.data.oldPrice === '' || this.data.oldPrice <= 0) {
-      isEmpty = true
-      this.setData({
-        inputOldPriceTag: true
-      })
-    }
+    // console.log("data:" + this.data.oldPrice)
+    // if (this.data.oldPrice === '' || this.data.oldPrice < 0) {
+    //   isEmpty = true
+    //   this.setData({
+    //     inputOldPriceTag: true
+    //   })
+    // }
     if (this.data.amount === '' || this.data.amount <= 0) {
       isEmpty = true
       this.setData({
