@@ -1,0 +1,10 @@
+<!--pages/home/home.wxml-->
+<view class="userinfo" style='margin-top:40px;margin-left:70px;height:200px;width:200px'>
+  <image class="userinfo-avatar" src="../../logo2.png" mode="Widthfix"></image>
+</view>
+<view style="margin-top: 0px;width:93%;margin-left:15px;">
+<van-button style="margin-top: 100px;" type="default" size="large" bind:click="toLogin">用户名密码登录</van-button>
+</view>
+<view style="margin-top: 10px;width:93%;margin-left:15px;">
+<van-button type="primary" size="large" wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信授权登录</van-button>
+</view>
