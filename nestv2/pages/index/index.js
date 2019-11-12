@@ -86,6 +86,7 @@ Page({
           wx.hideLoading();
           wx.setStorageSync("session", res.data.result)
           wx.setStorageSync("userName", this.data.userName)
+          wx.setStorageSync("nickName", this.data.nickName)
           wx.navigateTo({
             url: '../search/search'
           })

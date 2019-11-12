@@ -1,0 +1,21 @@
+<wux-dialog id="wux-dialog" />
+<van-popup show="{{ show }}" bind:close="onClose" position="top">
+<mp-searchbar placeholder="请输入关键字搜索" bindselectresult="selectResult" search="{{search}}" bindfocus="select" bindinput="inputSearch" searchFocus="{{searchFocus}}">
+</mp-searchbar>
+</van-popup>
+<scroll-view class="scrol-list" scroll-y enable-back-to-top>
+<view wx:for="{{ selectList }}" wx:key="{{ index }}">
+<view class="list-cell">
+  <van-swipe-cell right-width="{{ 65 }}" left-width="{{ 1 }}">
+    <van-cell-group>
+      <van-cell title="{{ item.name }}" value="内容" id = "checkBox:{{ index }}" bind:click="onClickCheckBox" clickable border/>
+    </van-cell-group>
+    <view slot="right" class="van-swipe-cell__right">删除</view>
+  </van-swipe-cell>
+</view>
+</view>
+</scroll-view>
+<van-button custom-class="search-btn-back" type="primary" size="large" bind:click="onClickSave">确认</van-button>
+<wux-floating-button position="bottomRight" theme="dark" backdrop="true" buttons="{{ buttons }}" bind:change="onChangeFloadButton" bind:click="onClickFload" actionRotate="true"/>
+
+

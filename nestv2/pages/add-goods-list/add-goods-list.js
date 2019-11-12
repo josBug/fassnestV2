@@ -9,7 +9,8 @@ Page({
    */
   data: {
     addList:[],
-    checked:false
+    checked:false,
+    selectList:[]
   },
 
   /**

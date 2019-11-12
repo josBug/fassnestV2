@@ -26,12 +26,12 @@ Page({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: res => {
-              console.log("asasa" + JSON.stringify(res.userInfo))
-              this.loginWx(res);
-            }
-          })
+          // wx.getUserInfo({
+          //   success: res => {
+          //     console.log("asasa" + JSON.stringify(res.userInfo))
+          //     this.loginWx(res);
+          //   }
+          // })
         } else {
 
         }
@@ -117,7 +117,7 @@ Page({
           }
           //发起网络请求
           wx.request({
-            url: 'http://127.0.0.1:8080/wx/login', //'https://www.lywss.top/wx/login',
+            url: 'https://www.lywss.top/wx/login', //'https://www.lywss.top/wx/login',
             data: JSON.stringify(loginParam),
             header: {
               "Content-Type": "application/json;charset=UTF-8"
@@ -130,6 +130,7 @@ Page({
                 wx.hideLoading();
                 wx.setStorageSync("session", resLoginWx.data.session)
                 wx.setStorageSync("userName", resLoginWx.data.userName)
+                wx.setStorageSync("nickName", resLoginWx.data.nickName)
                 wx.navigateTo({
                   url: '../search/search'
                 })
@@ -139,6 +140,7 @@ Page({
             },
             fail: resLoginWx => {
               wx.hideLoading();
+              console.log('登录失败！' + resLoginWx.data)              
               Toast.fail("登录失败!")
             }
           })

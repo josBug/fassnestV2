@@ -77,7 +77,7 @@ Page({
       searchStorage: wx.getStorageSync('searchData'),
       searchStorageName: wx.getStorageSync('searchStorageName'),
       userTitle: wx.getStorageSync("userName").charAt(0).toUpperCase(),
-      userName: wx.getStorageSync("userName")
+      userName: wx.getStorageSync("nickName").length > 10 ? wx.getStorageSync("nickName").slice(0, 10) : wx.getStorageSync("nickName")
     });
 
     var registryParam = {
@@ -370,6 +370,7 @@ Page({
           Toast.success("退出登录成功!")
           wx.setStorageSync("session", "")
           wx.setStorageSync("userName", "")
+          wx.setStorageSync("nickName", "")
           wx.hideLoading();
           let page = getCurrentPages();
           let prevPage = page[page.length - 2];

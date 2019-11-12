@@ -1,0 +1,32 @@
+{
+  "usingComponents": {
+    "mp-searchbar": "../../dist/weui-miniprogram/searchbar/searchbar",
+    "van-popup": "../../dist/popup/index",
+    "van-button": "../../dist/button/index",
+    "van-card": "../../dist/card/index",
+    "van-tabbar": "../../dist/tabbar/index",
+    "van-tabbar-item": "../../dist/tabbar-item/index",
+    "van-search": "../../dist/search/index",
+    "van-icon": "../../dist/icon/index",
+    "van-action-sheet": "../../dist/action-sheet/index",
+    "van-field": "../../dist/field/index",
+    "van-row": "../../dist/row/index",
+    "van-col": "../../dist/col/index",
+    "van-checkbox": "../../dist/checkbox/index",
+    "van-toast": "../../dist/toast/index",
+    "van-checkbox-group": "../../dist/checkbox-group/index",
+    "van-dialog": "../../dist/dialog/index",
+    "wux-floating-button": "../../dist/wuxdist/floating-button/index",
+    "i-avatar": "../../dist/dist/avatar/index",
+    "wux-checkbox": "../../dist/wuxdist/checkbox/index",
+    "wux-icon": "../../dist/wuxdist/icon/index",
+    "wux-button": "../../dist/wuxdist/button/index",
+    "van-cell": "../../dist/cell/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "wux-dialog": "../../dist/wuxdist/dialog/index",
+    "van-swipe-cell": "../../dist/swipe-cell/index"
+  },
+  "navigationBarBackgroundColor": "#2B2B2B",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "买家列表"
+}
