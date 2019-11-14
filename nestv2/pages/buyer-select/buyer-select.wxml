@@ -6,10 +6,20 @@
 <scroll-view class="scrol-list" scroll-y enable-back-to-top>
 <view wx:for="{{ selectList }}" wx:key="{{ index }}">
 <view class="list-cell">
-  <van-swipe-cell right-width="{{ 65 }}" left-width="{{ 1 }}">
-    <van-cell-group>
-      <van-cell title="{{ item.name }}" value="内容" id = "checkBox:{{ index }}" bind:click="onClickCheckBox" clickable border/>
+  <van-swipe-cell right-width="{{ 65 }}" left-width="{{ 1 }}" bind:click="onCloseSwipe" id= "swipe:{{ index }}">
+  <van-row>
+  <van-col span="16">
+      <van-cell-group>
+        <van-cell title="{{ item.name }}" value="数量:" id = "checkBox:{{ index }}" bind:click="onClickCheckBox" clickable border/>
     </van-cell-group>
+  </van-col>
+  <van-col span="8">
+  <view class="stepper-top">
+      <van-stepper value="{{ item.number }}" input-width="20px" button-size="20px" id = "stepper:{{index}}" bind:change="onChangeStepper" />
+  </view>
+  </van-col>
+</van-row>
+
     <view slot="right" class="van-swipe-cell__right">删除</view>
   </van-swipe-cell>
 </view>

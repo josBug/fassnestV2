@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/buyer-select/buyer-select",
     "pages/home/home",
     "pages/index/index",
     "pages/search/search",
@@ -10,7 +9,8 @@
     "pages/add-goods-edit/add-goods-edit",
     "pages/registry/registry",
     "pages/detail-info/detail-info",
-    "pages/edit-passwd/edit-passwd"
+    "pages/edit-passwd/edit-passwd",
+    "pages/buyer-select/buyer-select"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

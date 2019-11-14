@@ -16,7 +16,7 @@
     <van-cell
     id = "cell:{{ index }}"
     title="{{ item.goodsName }}"
-    value="x{{ item.amount }}"
+    value="x{{ item.selectList.length }}"
     size="large"
     label="货号:{{ item.code }} 卖出价:{{ item.sellPrice }} 颜色:{{ item.color }} 来源:{{ item.source }}"
     is-link

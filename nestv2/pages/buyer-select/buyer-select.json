@@ -24,7 +24,8 @@
     "van-cell": "../../dist/cell/index",
     "van-cell-group": "../../dist/cell-group/index",
     "wux-dialog": "../../dist/wuxdist/dialog/index",
-    "van-swipe-cell": "../../dist/swipe-cell/index"
+    "van-swipe-cell": "../../dist/swipe-cell/index",
+    "van-stepper": "../../dist/stepper/index"
   },
   "navigationBarBackgroundColor": "#2B2B2B",
   "navigationBarTextStyle": "white",

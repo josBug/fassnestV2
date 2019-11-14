@@ -2,7 +2,7 @@
   <van-toast id="van-toast" />
   <text class="title">买家信息</text>
   <van-cell-group>
-    <van-field
+    <!-- <van-field
       value="{{ name }}"
       label="买家微信名"
       placeholder="请输入买家名"
@@ -10,7 +10,8 @@
       required
       error-message="{{ inputNameTag && name === '' ? '买家名不能为空' : '' }}"
       bind:change="onChangeName"
-    />
+    /> -->
+        <van-cell title="买家列表" is-link value="{{selectList.length}}" bind:click="clickSeller"/>
   </van-cell-group>
   <text class="title">商品信息</text>  
   <van-cell-group>
@@ -55,7 +56,7 @@
       type="digit"
       bind:change="onChangeOldPrice"
     />
-    <van-field
+    <!-- <van-field
       value="{{ amount }}"
       label="数量"
       placeholder="请输入数量"
@@ -64,7 +65,7 @@
       type="number"
       error-message="{{ inputAmountTag && (amount === '' || amount === 0) ? '数量不能为空' : ''  }}"
       bind:change="onChangeNumbers"
-    />
+    /> -->
     <van-field
       value="{{ remark }}"
       label="备注"

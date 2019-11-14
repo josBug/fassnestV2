@@ -29,7 +29,8 @@ Page({
     inputOldPriceTag: false,
     inputAmountTag: false,
     pickIndex:0,
-    arrayPicker:['爱xx','宝xx','舟xx']
+    arrayPicker:['爱xx','宝xx','舟xx'],
+    selectList:[]
   },
 
   /**
@@ -52,6 +53,7 @@ Page({
         source: options.source,
         send: parseInt(options.send),
         isPay: parseInt(options.isPay),
+        selectList: JSON.parse(options.selectList),
         btnText:'更新'      
       })
     }
@@ -69,7 +71,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log(this.data.selectList)
   },
 
   /**
@@ -99,6 +101,11 @@ Page({
   onReachBottom: function () {
 
   },
+  clickSeller: function(e) {
+    wx.navigateTo({
+      url: '../buyer-select/buyer-select?selectList=' + JSON.stringify(this.data.selectList),
+    })
+  },
   bindPickerChange: function(e) {
     this.setData({
       pickIndex:e.detail.value,
@@ -113,12 +120,12 @@ Page({
   },
   onClickSave: function (e) {
     var isEmpty = false;
-    if (this.data.name === '') {
-      isEmpty = true
-      this.setData({
-        inputNameTag: true
-      })
-    }
+    // if (this.data.name === '') {
+    //   isEmpty = true
+    //   this.setData({
+    //     inputNameTag: true
+    //   })
+    // }
     if (this.data.goodsName === '') {
       isEmpty = true
       this.setData({
@@ -138,12 +145,12 @@ Page({
     //     inputOldPriceTag: true
     //   })
     // }
-    if (this.data.amount === '' || this.data.amount <= 0) {
-      isEmpty = true
-      this.setData({
-        inputAmountTag: true
-      })
-    }
+    // if (this.data.amount === '' || this.data.amount <= 0) {
+    //   isEmpty = true
+    //   this.setData({
+    //     inputAmountTag: true
+    //   })
+    // }
     if (isEmpty) {
       return;
     }
@@ -225,6 +232,7 @@ Page({
 
     if (index === -1) {
       var data = {
+        selectList:this.data.selectList,
         name: this.data.name,
         checkCell: false,
         goodsName: this.data.goodsName,
@@ -260,6 +268,7 @@ Page({
       var isPayTemp = 'addList[' + index + '].isPay'
       var sourceTemp = 'addList[' + index + '].source'
       var pickIndexTemp = 'addList[' + index + '].pickIndex'
+      var selectListTemp = 'addList[' + index + '].selectList'
 
       prevPage.setData({
         [nameTemp]: this.data.name,
@@ -274,7 +283,8 @@ Page({
         [sendTemp]: this.data.send,
         [isPayTemp]:this.data.isPay,
         [sourceTemp]: this.data.source,
-        [pickIndexTemp]: this.data.pickIndex
+        [pickIndexTemp]: this.data.pickIndex,
+        [selectListTemp]:this.data.selectList
       })
     }
     

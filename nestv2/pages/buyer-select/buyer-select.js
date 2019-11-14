@@ -1,5 +1,7 @@
 // pages/buyer-select/buyer-select.js
-import { $wuxDialog } from '../../dist/wuxdist/index'
+import {
+  $wuxDialog
+} from '../../dist/wuxdist/index'
 Page({
 
   /**
@@ -12,17 +14,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
+  onLoad: function (options) {
+    console.log(options.selectList)
     this.setData({
       search: this.search.bind(this),
       searchFocus: this.searchFocus.bind(this),
-      searchText:"",
-      preSearchText:"",
+      searchText: "",
+      preSearchText: "",
       searchList: [],
-      show:false,
-      selectList: [{ name: '你好' }, { name: '你好' }, { name: '你好' }, { name: '你好' }, { name: '你好' }, { name: '你好' }],
-      buttons: [
-        {
+      show: false,
+      selectList: JSON.parse(options.selectList),
+      buttons: [{
           label: '新增',
           icon: "../../inputbuyer.png"
         },
@@ -34,7 +36,7 @@ Page({
       ]
     })
   },
-  search: function (value) {
+  search: function(value) {
     if (value == this.data.searchText) {
       return new Promise((resolve, reject) => {
         resolve(this.data.searchList)
@@ -54,7 +56,7 @@ Page({
         }
 
         wx.request({
-          url: 'http://127.0.0.1:8000/list/buyer',
+          url: 'https://www.lywss.top/list/buyer',
           data: JSON.stringify(param),
           header: {
             "Content-Type": "application/json;charset=UTF-8"
@@ -87,9 +89,9 @@ Page({
     }
 
     this.setData({
-      searchText:value
+      searchText: value
     })
-    
+
     return new Promise((resolve, reject) => {
       var param = {
         "ver": "1.0",
@@ -103,7 +105,7 @@ Page({
       }
 
       wx.request({
-        url: 'http://127.0.0.1:8000/search/buyer',
+        url: 'https://www.lywss.top/search/buyer',
         data: JSON.stringify(param),
         header: {
           "Content-Type": "application/json;charset=UTF-8"
@@ -127,11 +129,10 @@ Page({
           resolve(this.data.searchList)
         }
       })
-      
+
     })
   },
-  inputSearch: function(e) {
-  },
+  inputSearch: function(e) {},
   searchFocus: function() {
 
     return new Promise((resolve, reject) => {
@@ -146,7 +147,7 @@ Page({
       }
 
       wx.request({
-        url: 'http://127.0.0.1:8000/list/buyer',
+        url: 'https://www.lywss.top/list/buyer',
         data: JSON.stringify(param),
         header: {
           "Content-Type": "application/json;charset=UTF-8"
@@ -177,68 +178,115 @@ Page({
       })
     })
   },
-  selectResult: function (e) {
+  selectResult: function(e) {
+    console.log(this.data.selectList)
     console.log('select result', e.detail)
+    var tempList = this.data.selectList
+    var temp = {
+      name: e.detail.item.name,
+      number: 1
+    }
+    tempList.push(temp)
+    console.log(tempList)
+    this.setData({
+      selectList: tempList
+    })
+    this.setData({
+      show: false
+    })
+
+
   },
   select: function(e) {
-    
+
   },
   onClose: function(e) {
     this.setData({
-      show:false
+      show: false
     })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
   onChangeFloadButton: function(e) {
 
+  },
+  onClickSave: function(e) {
+    console.log(this.data.selectList)
+    var tempList = this.data.selectList;
+    let page = getCurrentPages();
+    let prevPage = page[page.length - 2];
+    prevPage.setData({
+      selectList: tempList
+    })
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+  onChangeStepper: function(e) {
+    var strId = e.currentTarget.id.split(':')[1];
+    var obj = this.data.selectList[strId];
+    obj.number = e.detail
+    this.data.selectList[strId] = obj
+    console.log(this.data.selectList)
+  },
+  onCloseSwipe: function(e) {
+    console.log(e)
+    var swipeId = e.target.id.split(':')[0];
+    if (e.detail === 'right') {
+        var tempList = this.data.selectList;
+        tempList.splice(swipeId, 1)
+        console.log(tempList)
+        this.setData({
+          selectList: tempList
+        })
+    }
   },
   onClickFload: function(e) {
     console.log(e.detail)
@@ -262,9 +310,9 @@ Page({
               "name": response
             }
           }
-          
+
           wx.request({
-            url: 'http://127.0.0.1:8000/add/buyer',
+            url: 'https://www.lywss.top/add/buyer',
             data: JSON.stringify(param),
             header: {
               "Content-Type": "application/json;charset=UTF-8"
@@ -273,20 +321,12 @@ Page({
             success: res => {
               var tempList = this.data.selectList
               var temp = {
-                id: res.data.id,
                 name: res.data.name,
-                userId: res.data.userId,
-                text: res.data.name,
-                value: res.data.id
+                number:1
               }
               tempList.push(temp)
               console.log(tempList)
               this.setData({
-                selectList: tempList
-              })
-              let page = getCurrentPages();
-              let prevPage = page[page.length - 2];
-              prevPage.setData({
                 selectList: tempList
               })
             }
